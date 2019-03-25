@@ -280,5 +280,60 @@ namespace Assign4 {
             // Draw the line for the negative X-axis side.
             g.DrawCurve(pen, points);
         }
+
+        private void ButtonQuadraticCalculate(object sender, EventArgs e) {
+            drawGrid();
+
+            pen.Width = 2;
+            pen.Color = Color.Black;
+
+            Point[] points;
+
+            int a = 0;
+            int b = 1;
+            int c = 2;
+
+            int parsedValue;
+
+            // Check to see if user inputted only numbers.
+            if (!int.TryParse(textTwoA.Text, out parsedValue)) {
+                textTwoA.Clear();
+                textTwoB.Clear();
+                textTwoC.Clear();
+
+                richTextMessage.AppendText("Numbers only!");
+
+                return;
+            }
+
+            // Get what the user typed into the inputs for the linear equation.
+            a = Convert.ToInt32(textTwoA.Text);
+            b = Convert.ToInt32(textTwoB.Text);
+            c = Convert.ToInt32(textTwoC.Text);
+
+            // Get the total amount of X-axis ticks (positive and negative).
+            int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
+
+            // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
+            points = new Point[amountOfTicksPosX];
+
+            // For every positive X-axis tick, make an (x,y) point.
+            for (int i = 0; i < amountOfTicksPosX; i++) {
+                points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
+            }
+
+            // Draw the line for the positive X-axis side.
+            g.DrawLines(pen, points);
+
+            // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
+            points = new Point[amountOfTicksNegX];
+
+            // For every negative X-axis tick, make an (x,y) point.
+            for (int i = 0; i < amountOfTicksNegX; i++) {
+                points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksPosY)));
+            }
+            // Draw the line for the negative X-axis side
+            g.DrawCurve(pen, points);
+        }
     }
 }

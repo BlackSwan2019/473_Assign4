@@ -30,7 +30,6 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -55,6 +54,11 @@
             this.label14 = new System.Windows.Forms.Label();
             this.textThreeD = new System.Windows.Forms.RichTextBox();
             this.calcCubic = new System.Windows.Forms.Button();
+            this.textTwoA = new System.Windows.Forms.TextBox();
+            this.textTwoB = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textTwoC = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -105,7 +109,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Red;
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(565, 152);
+            this.pictureBox2.Location = new System.Drawing.Point(685, 148);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(43, 39);
             this.pictureBox2.TabIndex = 6;
@@ -116,7 +120,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Red;
             this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(565, 230);
+            this.pictureBox3.Location = new System.Drawing.Point(685, 230);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(43, 39);
             this.pictureBox3.TabIndex = 12;
@@ -130,19 +134,11 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 39);
             this.label4.TabIndex = 11;
-            this.label4.Text = "1.";
-            // 
-            // richTextBox3
-            // 
-            this.richTextBox3.Location = new System.Drawing.Point(285, 230);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(40, 39);
-            this.richTextBox3.TabIndex = 9;
-            this.richTextBox3.Text = "";
+            this.label4.Text = "2.";
             // 
             // richTextBox4
             // 
-            this.richTextBox4.Location = new System.Drawing.Point(156, 230);
+            this.richTextBox4.Location = new System.Drawing.Point(351, 526);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(40, 39);
             this.richTextBox4.TabIndex = 8;
@@ -162,7 +158,7 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Red;
             this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(565, 316);
+            this.pictureBox4.Location = new System.Drawing.Point(685, 316);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(43, 39);
             this.pictureBox4.TabIndex = 18;
@@ -274,17 +270,17 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(212, 230);
+            this.label5.Location = new System.Drawing.Point(278, 224);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 39);
+            this.label5.Size = new System.Drawing.Size(73, 39);
             this.label5.TabIndex = 10;
-            this.label5.Text = "x +";
+            this.label5.Text = "x^2";
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(630, 148);
+            this.button1.Location = new System.Drawing.Point(745, 148);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 39);
             this.button1.TabIndex = 25;
@@ -312,7 +308,7 @@
             // 
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextMessage.Location = new System.Drawing.Point(50, 31);
-            this.richTextMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
             this.richTextMessage.Name = "richTextMessage";
             this.richTextMessage.Size = new System.Drawing.Size(356, 63);
             this.richTextMessage.TabIndex = 28;
@@ -358,7 +354,7 @@
             // 
             this.calcCubic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calcCubic.ForeColor = System.Drawing.Color.Black;
-            this.calcCubic.Location = new System.Drawing.Point(630, 316);
+            this.calcCubic.Location = new System.Drawing.Point(745, 316);
             this.calcCubic.Name = "calcCubic";
             this.calcCubic.Size = new System.Drawing.Size(148, 39);
             this.calcCubic.TabIndex = 32;
@@ -366,12 +362,63 @@
             this.calcCubic.UseVisualStyleBackColor = true;
             this.calcCubic.Click += new System.EventHandler(this.calcCubic_Click);
             // 
+            // textTwoA
+            // 
+            this.textTwoA.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTwoA.Location = new System.Drawing.Point(158, 230);
+            this.textTwoA.Name = "textTwoA";
+            this.textTwoA.Size = new System.Drawing.Size(107, 35);
+            this.textTwoA.TabIndex = 33;
+            // 
+            // textTwoB
+            // 
+            this.textTwoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTwoB.Location = new System.Drawing.Point(351, 230);
+            this.textTwoB.Name = "textTwoB";
+            this.textTwoB.Size = new System.Drawing.Size(107, 35);
+            this.textTwoB.TabIndex = 34;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(464, 224);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 39);
+            this.label15.TabIndex = 35;
+            this.label15.Text = "x +";
+            // 
+            // textTwoC
+            // 
+            this.textTwoC.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textTwoC.Location = new System.Drawing.Point(537, 230);
+            this.textTwoC.Name = "textTwoC";
+            this.textTwoC.Size = new System.Drawing.Size(107, 35);
+            this.textTwoC.TabIndex = 36;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(745, 230);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 39);
+            this.button2.TabIndex = 37;
+            this.button2.Text = "Calculate!";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ButtonQuadraticCalculate);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1548, 696);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textTwoC);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.textTwoB);
+            this.Controls.Add(this.textTwoA);
             this.Controls.Add(this.richTextMessage);
             this.Controls.Add(this.calcCubic);
             this.Controls.Add(this.label14);
@@ -396,7 +443,6 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox2);
@@ -427,7 +473,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox3;
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -452,6 +497,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.RichTextBox textThreeD;
         private System.Windows.Forms.Button calcCubic;
+        private System.Windows.Forms.TextBox textTwoA;
+        private System.Windows.Forms.TextBox textTwoB;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textTwoC;
+        private System.Windows.Forms.Button button2;
     }
 }
 
