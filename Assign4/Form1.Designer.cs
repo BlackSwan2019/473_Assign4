@@ -49,6 +49,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textOneM = new System.Windows.Forms.TextBox();
             this.textOneB = new System.Windows.Forms.TextBox();
+            this.richTextMessage = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -293,7 +294,6 @@
             this.textOneM.Name = "textOneM";
             this.textOneM.Size = new System.Drawing.Size(107, 35);
             this.textOneM.TabIndex = 26;
-            this.textOneM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textOneM_KeyPress);
             // 
             // textOneB
             // 
@@ -303,12 +303,22 @@
             this.textOneB.Size = new System.Drawing.Size(107, 35);
             this.textOneB.TabIndex = 27;
             // 
+            // richTextMessage
+            // 
+            this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextMessage.Location = new System.Drawing.Point(50, 507);
+            this.richTextMessage.Name = "richTextMessage";
+            this.richTextMessage.Size = new System.Drawing.Size(574, 117);
+            this.richTextMessage.TabIndex = 28;
+            this.richTextMessage.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1363, 707);
+            this.Controls.Add(this.richTextMessage);
             this.Controls.Add(this.textOneB);
             this.Controls.Add(this.textOneM);
             this.Controls.Add(this.button1);
@@ -377,6 +387,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textOneM;
         private System.Windows.Forms.TextBox textOneB;
+        private System.Windows.Forms.RichTextBox richTextMessage;
     }
 }
 

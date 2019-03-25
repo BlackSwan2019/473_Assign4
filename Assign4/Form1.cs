@@ -146,13 +146,13 @@ namespace Assign4 {
 
             int parsedValue;
 
-            // Check to see if user inputted only numbers.
-            if (int.TryParse(textOneM.Text, out parsedValue)) {
-                MessageBox.Show("Processing...");
-            } else {
+            // If user inputted a non-number, then yell at them and don't perform any more action!
+            if (!int.TryParse(textOneM.Text, out parsedValue)) {
                 textOneM.Clear();
                 textOneB.Clear();
-                MessageBox.Show("Numbers only!");
+
+                richTextMessage.AppendText("Numbers only!");
+
                 return;
             }
 
@@ -171,8 +171,17 @@ namespace Assign4 {
                 points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
             }
 
+            // Find the max (x, y) coordinate point of the positive X-axis line.
+            Point maxPositive = new Point(pictureBoxGrid.Width, b - (m * pictureBoxGrid.Width));
+            Point minPositive = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksPosY));
+
+            //MessageBox.Show(maxPositive.X.ToString() + " " + maxPositive.Y.ToString());
+            //MessageBox.Show(minPositive.X.ToString() + " " + minPositive.Y.ToString());
+
+            g.DrawLine(pen, minPositive, maxPositive);
+
             // Draw the line for the positive X-axis side.
-            g.DrawLines(pen, points);
+            //g.DrawLines(pen, points);
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
             points = new Point[amountOfTicksNegX];
@@ -181,12 +190,19 @@ namespace Assign4 {
             for (int i = 0; i < amountOfTicksNegX; i++) {
                 points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) + m * (i * pixelsBetweenTicksNegY));
             }
+
+            // Find the max (x, y) coordinate point of the negative X-axis line.
+            Point maxNegative = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksNegY));
+            Point minNegative = new Point(0, b + (m * pictureBoxGrid.Width));
+
+            //Point minNegative = new Point(0, halfHeight - (b * pixelsBetweenTicksPosY));
+
+            //MessageBox.Show(minNegative.X.ToString() + " " + minNegative.Y.ToString());
+
             // Draw the line for the negative X-axis side.
-            g.DrawLines(pen, points);
+            g.DrawLine(pen, minNegative, maxNegative);
+            //g.DrawLines(pen, points);
         }
 
-        private void textOneM_KeyPress(object sender, KeyPressEventArgs e) {
-        
-        }
     }
 }
