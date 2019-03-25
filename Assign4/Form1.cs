@@ -188,5 +188,78 @@ namespace Assign4 {
         private void textOneM_KeyPress(object sender, KeyPressEventArgs e) {
         
         }
+
+        private void calcCubic_Click(object sender, EventArgs e) {
+            drawGrid();
+
+            pen.Width = 2;
+            pen.Color = Color.Black;
+
+            Point[] points;
+
+            float a = .5f;
+            float b = .5f;
+            float c = .5f;
+            float d = 0f;
+
+            int parsedValue;
+
+            //// Check to see if user inputted only numbers.
+            //if (int.TryParse(textThreeA.Text, out parsedValue)) {
+            //    //MessageBox.Show("Processing...");
+            //} else {
+            //    textOneM.Clear();
+            //    textOneB.Clear();
+            //    //MessageBox.Show("Numbers only!");
+            //    return;
+            //}
+
+            // Get what the user typed into the inputs for the linear equation.
+            //a = Convert.ToInt32(textThreeA.Text);
+            //b = Convert.ToInt32(textThreeB.Text);
+            //c = Convert.ToInt32(textThreeC.Text);
+            //d = Convert.ToInt32(textThreeD.Text);
+
+            // Get the total amount of X-axis ticks (positive and negative).
+            int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
+
+            // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
+            points = new Point[amountOfTicksPosX];
+
+            // For every positive X-axis tick, make an (x,y) point.
+            for (int i = 0; i != amountOfTicksPosX; i++) {
+                //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
+                //y = ax3 + bx2 + cx + d
+                double x = (i * pixelsBetweenTicksPosX);
+                double y = ((a * pixelsBetweenTicksPosX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksPosX) * i) + (d * pixelsBetweenTicksPosX)));
+                points[i] = new Point(halfWidth + (int) x, halfHeight - (int) y * (i * pixelsBetweenTicksPosY));
+                if (i % 5 == 0) {
+                    //MessageBox.Show(points[i].X + " | " + points[i].Y + " | " + amountOfTicksPosX + " | " + pixelsBetweenTicksPosX + " | " + pixelsBetweenTicksPosY);
+                }
+            }
+
+            //MessageBox.Show(points.Length + "");
+
+            // Draw the line for the positive X-axis side.
+            g.DrawCurve(pen, points);
+
+            // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
+            points = new Point[halfWidth];
+
+            // For every positive X-axis tick, make an (x,y) point.
+            for (int i = 0; i != amountOfTicksPosX; i++) {
+                //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
+                //y = ax3 + bx2 + cx + d
+                double x = (i * pixelsBetweenTicksPosX);
+                double y = ((a * pixelsBetweenTicksPosX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksPosX) * i) + (d * pixelsBetweenTicksPosX)));
+                points[i] = new Point(halfWidth - (int)x, halfHeight + (int)y * (i * pixelsBetweenTicksPosY));
+                if (i % 5 == 0) {
+                    //MessageBox.Show(points[i].X + " | " + points[i].Y + " | " + amountOfTicksPosX + " | " + pixelsBetweenTicksPosX + " | " + pixelsBetweenTicksPosY);
+                }
+            }
+
+            // Draw the line for the negative X-axis side.
+            g.DrawCurve(pen, points);
+        }
     }
 }
