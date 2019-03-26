@@ -17,9 +17,10 @@ namespace Assign4 {
         int yMax = 100;
         int yInterval = 10;
 
-        Graphics g;
-        Pen pen;
+        Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
+        Pen pen;        // The object for drawing things on the graphics object (the graph).
 
+        // The colors for the color selector.  Determines  color of a line.
         Color oneColor = Color.Red;
         Color twoColor = Color.Red;
         Color threeColor = Color.Red;
@@ -146,13 +147,23 @@ namespace Assign4 {
 
             Point[] points;
 
-            int m = 0;
-            int b = 1;
+            int m = 0;      // Slope of line.
+            int b = 1;      // Y-intercept.
 
-            int parsedValue;
+            int parsedValue;    // Used for input validation.
 
-            // If user inputted a non-number, then yell at them and don't perform any more action!
+            // If user inputted a non-number for M, then yell at them and don't perform any more action!
             if (!int.TryParse(textOneM.Text, out parsedValue)) {
+                textOneM.Clear();
+                textOneB.Clear();
+
+                richTextMessage.AppendText("Numbers only!");
+
+                return;
+            }
+
+            // If user inputted a non-number for B, then yell at them and don't perform any more action!
+            if (!int.TryParse(textOneB.Text, out parsedValue)) {
                 textOneM.Clear();
                 textOneB.Clear();
 
@@ -195,19 +206,8 @@ namespace Assign4 {
             // Find (x, y) coordinate of the left side of the line.
             Point leftSideOfLine = points[points.Length - 1];
 
+            // Draw the line.
             g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
-
-            // Find the max (x, y) coordinate point of the negative X-axis line.
-            Point maxNegative = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksNegY));
-            Point minNegative = new Point(0, b + (m * pictureBoxGrid.Width));
-
-            //Point minNegative = new Point(0, halfHeight - (b * pixelsBetweenTicksPosY));
-
-            //MessageBox.Show(minNegative.X.ToString() + " " + minNegative.Y.ToString());
-
-            // Draw the line for the negative X-axis side.
-            //g.DrawLine(pen, minNegative, maxNegative);
-            //g.DrawLines(pen, points);
         }
 
         private void textOneM_KeyPress(object sender, KeyPressEventArgs e) {
@@ -339,7 +339,7 @@ namespace Assign4 {
             for (int i = 0; i < amountOfTicksPosX; i++) {
                 points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
             }
-
+            
             // Draw the line for the positive X-axis side.
             g.DrawLines(pen, points);
 
@@ -362,6 +362,7 @@ namespace Assign4 {
                 // Set form background to the selected color.
                 this.threeColor = colorThree.Color;
 
+                // Set the color of the color selector.
                 picColorThree.BackColor = colorThree.Color;
             }
         }
