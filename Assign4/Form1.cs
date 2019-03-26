@@ -10,15 +10,20 @@ using System.Windows.Forms;
 
 namespace Assign4 {
     public partial class Form1 : Form {
-        int xMin = 100;
+        int xMin = -100;
         int xMax = 100;
-        int xInterval = 5;
-        int yMin = 100;
+        int xInterval = 10;
+        int yMin = -100;
         int yMax = 100;
-        int yInterval = 5;
+        int yInterval = 10;
 
         Graphics g;
         Pen pen;
+
+        Color oneColor = Color.Red;
+        Color twoColor = Color.Red;
+        Color threeColor = Color.Red;
+        Color fourColor = Color.Red;
 
         int amountOfTicksPosX = 0;          // Number of tick marks on the positive X-axis.
         int pixelsBetweenTicksPosX = 0;     // The number of pixels between each tick on the positive X-axis.
@@ -69,26 +74,26 @@ namespace Assign4 {
 
 
             // Get how many ticks need to be drawn on positive X-axis.
-            amountOfTicksPosX = xMax / xInterval;
+            amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
 
             // Determine how many pixels between ticks on the positive X-axis.
             pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
 
             // Get how many ticks need to be drawn on negative X-axis.
-            amountOfTicksNegX = xMin / xInterval;
+            amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
 
             // Determine how many pixels between ticks on the negative X-axis.
             pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
 
 
             // Get how many ticks need to be drawn on positive Y-axis.
-            amountOfTicksPosY = yMax / yInterval;
+            amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
 
             // Determine how many pixels between ticks on the positive Y-axis.
             pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
 
             // Get how many ticks need to be drawn on negative Y-axis.
-            amountOfTicksNegY = yMin / yInterval;
+            amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
 
             // Determine how many pixels between ticks on the negative Y-axis.
             pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
@@ -213,32 +218,52 @@ namespace Assign4 {
             drawGrid();
 
             pen.Width = 2;
-            pen.Color = Color.Black;
+            pen.Color = colorThree.Color;
 
             Point[] points;
 
-            float a = .5f;
-            float b = .5f;
-            float c = .5f;
+            float a = 1f;
+            float b = 1f;
+            float c = 1f;
             float d = 0f;
 
-            int parsedValue;
+            float parsedValue;
 
-            //// Check to see if user inputted only numbers.
-            //if (int.TryParse(textThreeA.Text, out parsedValue)) {
-            //    //MessageBox.Show("Processing...");
-            //} else {
-            //    textOneM.Clear();
-            //    textOneB.Clear();
-            //    //MessageBox.Show("Numbers only!");
-            //    return;
-            //}
+            // Check to see if user inputted only numbers.
+            if (float.TryParse(textThreeA.Text, out parsedValue)) {
+                a = parsedValue;
+            } else {
+                textThreeA.Clear();
+                richTextMessage.Text = "Only Numbers!";
+                return;
+            }
 
-            // Get what the user typed into the inputs for the linear equation.
-            //a = Convert.ToInt32(textThreeA.Text);
-            //b = Convert.ToInt32(textThreeB.Text);
-            //c = Convert.ToInt32(textThreeC.Text);
-            //d = Convert.ToInt32(textThreeD.Text);
+            // Check to see if user inputted only numbers.
+            if (float.TryParse(textThreeB.Text, out parsedValue)) {
+                b = parsedValue;
+            } else {
+                textThreeB.Clear();
+                richTextMessage.Text = "Only Numbers!";
+                return;
+            }
+
+            // Check to see if user inputted only numbers.
+            if (float.TryParse(textThreeC.Text, out parsedValue)) {
+                c = parsedValue;
+            } else {
+                textThreeC.Clear();
+                richTextMessage.Text = "Only Numbers!";
+                return;
+            }
+
+            // Check to see if user inputted only numbers.
+            if (float.TryParse(textThreeD.Text, out parsedValue)) {
+                d = parsedValue;
+            } else {
+                textThreeD.Clear();
+                richTextMessage.Text = "Only Numbers!";
+                return;
+            }
 
             // Get the total amount of X-axis ticks (positive and negative).
             int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
@@ -248,34 +273,26 @@ namespace Assign4 {
 
             // For every positive X-axis tick, make an (x,y) point.
             for (int i = 0; i != amountOfTicksPosX; i++) {
-                //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
                 //y = ax3 + bx2 + cx + d
                 double x = (i * pixelsBetweenTicksPosX);
                 double y = ((a * pixelsBetweenTicksPosX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksPosX) * i) + (d * pixelsBetweenTicksPosX)));
-                points[i] = new Point(halfWidth + (int) x, halfHeight - (int) y * (i * pixelsBetweenTicksPosY));
-                if (i % 5 == 0) {
-                    //MessageBox.Show(points[i].X + " | " + points[i].Y + " | " + amountOfTicksPosX + " | " + pixelsBetweenTicksPosX + " | " + pixelsBetweenTicksPosY);
-                }
+                points[i] = new Point(halfWidth + (int) x, halfHeight - (int) y);
+                //Console.WriteLine(i + " | " + (a * Math.Pow(i, 3) + b * Math.Pow(i,2) + c * i + d) + " || " + x + " | " + y + " || " + points[i].X + " | " + points[i].Y);//+ " || " + i + " | " + ((a) * Math.Pow(i, 3) + ((b) * Math.Pow(i, 2) + ((c) * i) + (d))));
             }
-
-            //MessageBox.Show(points.Length + "");
 
             // Draw the line for the positive X-axis side.
             g.DrawCurve(pen, points);
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
-            points = new Point[halfWidth];
+            points = new Point[amountOfTicksNegX];
 
             // For every positive X-axis tick, make an (x,y) point.
-            for (int i = 0; i != amountOfTicksPosX; i++) {
-                //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
+            for (int i = 0; i != amountOfTicksNegX; i++) {
                 //y = ax3 + bx2 + cx + d
-                double x = (i * pixelsBetweenTicksPosX);
-                double y = ((a * pixelsBetweenTicksPosX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksPosX) * i) + (d * pixelsBetweenTicksPosX)));
-                points[i] = new Point(halfWidth - (int)x, halfHeight + (int)y * (i * pixelsBetweenTicksPosY));
-                if (i % 5 == 0) {
-                    //MessageBox.Show(points[i].X + " | " + points[i].Y + " | " + amountOfTicksPosX + " | " + pixelsBetweenTicksPosX + " | " + pixelsBetweenTicksPosY);
-                }
+                double x = (i * pixelsBetweenTicksNegX);
+                double y = ((a * pixelsBetweenTicksNegX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksNegX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksNegX) * i)));
+                points[i] = new Point(halfWidth - (int)x, halfHeight + (int)y - (int) (d * pixelsBetweenTicksNegX));
+                //Console.WriteLine(i + " | " + (a * Math.Pow(i, 3) + b * Math.Pow(i, 2) + c * i + d) + " || " + x + " | " + y + " || " + points[i].X + " | " + points[i].Y);//+ " || " + i + " | " + ((a) * Math.Pow(i, 3) + ((b) * Math.Pow(i, 2) + ((c) * i) + (d))));
             }
 
             // Draw the line for the negative X-axis side.
@@ -335,6 +352,30 @@ namespace Assign4 {
             }
             // Draw the line for the negative X-axis side
             g.DrawCurve(pen, points);
+        }
+
+        private void picColorThree_Click(object sender, EventArgs e) {
+            // Show the color dialog.
+            DialogResult result = colorThree.ShowDialog();
+            // See if user pressed ok.
+            if (result == DialogResult.OK) {
+                // Set form background to the selected color.
+                this.threeColor = colorThree.Color;
+
+                picColorThree.BackColor = colorThree.Color;
+            }
+        }
+
+        private void textThreeC_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e) {
+
+        }
+
+        private void textThreeD_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

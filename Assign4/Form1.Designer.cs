@@ -32,7 +32,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.textThreeB = new System.Windows.Forms.RichTextBox();
@@ -59,11 +58,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textTwoC = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.colorThree = new System.Windows.Forms.ColorDialog();
+            this.picColorThree = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picColorThree)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxGrid
@@ -138,7 +139,7 @@
             // 
             // richTextBox4
             // 
-            this.richTextBox4.Location = new System.Drawing.Point(387, 408);
+            this.richTextBox4.Location = new System.Drawing.Point(401, 408);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(40, 39);
             this.richTextBox4.TabIndex = 8;
@@ -153,16 +154,6 @@
             this.label6.Size = new System.Drawing.Size(67, 39);
             this.label6.TabIndex = 7;
             this.label6.Text = "y =";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Red;
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(685, 316);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox4.TabIndex = 18;
-            this.pictureBox4.TabStop = false;
             // 
             // label7
             // 
@@ -308,7 +299,7 @@
             // 
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextMessage.Location = new System.Drawing.Point(50, 31);
-            this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.richTextMessage.Name = "richTextMessage";
             this.richTextMessage.Size = new System.Drawing.Size(356, 63);
             this.richTextMessage.TabIndex = 28;
@@ -326,29 +317,32 @@
             // 
             // textThreeC
             // 
-            this.textThreeC.Location = new System.Drawing.Point(387, 317);
+            this.textThreeC.Location = new System.Drawing.Point(401, 317);
             this.textThreeC.Name = "textThreeC";
             this.textThreeC.Size = new System.Drawing.Size(40, 39);
             this.textThreeC.TabIndex = 28;
             this.textThreeC.Text = "";
+            this.textThreeC.TextChanged += new System.EventHandler(this.textThreeC_TextChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(426, 317);
+            this.label14.Location = new System.Drawing.Point(440, 317);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(77, 39);
             this.label14.TabIndex = 31;
             this.label14.Text = " x +";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // textThreeD
             // 
-            this.textThreeD.Location = new System.Drawing.Point(502, 317);
+            this.textThreeD.Location = new System.Drawing.Point(516, 317);
             this.textThreeD.Name = "textThreeD";
             this.textThreeD.Size = new System.Drawing.Size(40, 39);
             this.textThreeD.TabIndex = 30;
             this.textThreeD.Text = "";
+            this.textThreeD.TextChanged += new System.EventHandler(this.textThreeD_TextChanged);
             // 
             // calcCubic
             // 
@@ -408,12 +402,28 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.ButtonQuadraticCalculate);
             // 
+            // colorThree
+            // 
+            this.colorThree.Color = System.Drawing.Color.Red;
+            // 
+            // picColorThree
+            // 
+            this.picColorThree.BackColor = System.Drawing.Color.Red;
+            this.picColorThree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picColorThree.Location = new System.Drawing.Point(685, 316);
+            this.picColorThree.Name = "picColorThree";
+            this.picColorThree.Size = new System.Drawing.Size(43, 39);
+            this.picColorThree.TabIndex = 38;
+            this.picColorThree.TabStop = false;
+            this.picColorThree.Click += new System.EventHandler(this.picColorThree_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1548, 696);
+            this.ClientSize = new System.Drawing.Size(1548, 642);
+            this.Controls.Add(this.picColorThree);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textTwoC);
             this.Controls.Add(this.label15);
@@ -434,7 +444,6 @@
             this.Controls.Add(this.richTextBox7);
             this.Controls.Add(this.richTextBox8);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textThreeB);
@@ -457,8 +466,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picColorThree)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,7 +484,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox richTextBox4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RichTextBox textThreeB;
@@ -502,6 +510,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textTwoC;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ColorDialog colorThree;
+        private System.Windows.Forms.PictureBox picColorThree;
     }
 }
 
