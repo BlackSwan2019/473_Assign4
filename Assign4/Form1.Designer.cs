@@ -138,7 +138,7 @@
             // 
             // richTextBox4
             // 
-            this.richTextBox4.Location = new System.Drawing.Point(351, 526);
+            this.richTextBox4.Location = new System.Drawing.Point(387, 408);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(40, 39);
             this.richTextBox4.TabIndex = 8;
@@ -214,7 +214,7 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Red;
             this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(565, 408);
+            this.pictureBox5.Location = new System.Drawing.Point(685, 408);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(43, 39);
             this.pictureBox5.TabIndex = 24;

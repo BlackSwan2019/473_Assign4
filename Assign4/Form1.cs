@@ -160,8 +160,9 @@ namespace Assign4 {
             m = Convert.ToInt32(textOneM.Text);
             b = Convert.ToInt32(textOneB.Text);
 
-            // Get the total amount of X-axis ticks (positive and negative).
+            // Get the total amount of X and Y-axis ticks (positive and negative).
             int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
+            int numberOfYAxisTicks = amountOfTicksPosY + amountOfTicksNegY;
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
             points = new Point[amountOfTicksPosX];
@@ -171,17 +172,12 @@ namespace Assign4 {
                 points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
             }
 
+            // Find (x, y) coordinate of the right side of the line.
+            Point rightSideOfLine = points[points.Length - 1];
+
             // Find the max (x, y) coordinate point of the positive X-axis line.
             Point maxPositive = new Point(pictureBoxGrid.Width, b - (m * pictureBoxGrid.Width));
             Point minPositive = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksPosY));
-
-            //MessageBox.Show(maxPositive.X.ToString() + " " + maxPositive.Y.ToString());
-            //MessageBox.Show(minPositive.X.ToString() + " " + minPositive.Y.ToString());
-
-            g.DrawLine(pen, minPositive, maxPositive);
-
-            // Draw the line for the positive X-axis side.
-            //g.DrawLines(pen, points);
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
             points = new Point[amountOfTicksNegX];
@@ -190,6 +186,11 @@ namespace Assign4 {
             for (int i = 0; i < amountOfTicksNegX; i++) {
                 points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) + m * (i * pixelsBetweenTicksNegY));
             }
+
+            // Find (x, y) coordinate of the left side of the line.
+            Point leftSideOfLine = points[points.Length - 1];
+
+            g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
 
             // Find the max (x, y) coordinate point of the negative X-axis line.
             Point maxNegative = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksNegY));
@@ -200,7 +201,7 @@ namespace Assign4 {
             //MessageBox.Show(minNegative.X.ToString() + " " + minNegative.Y.ToString());
 
             // Draw the line for the negative X-axis side.
-            g.DrawLine(pen, minNegative, maxNegative);
+            //g.DrawLine(pen, minNegative, maxNegative);
             //g.DrawLines(pen, points);
         }
 
