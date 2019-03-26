@@ -27,7 +27,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picColorOne = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
@@ -61,7 +61,7 @@
             this.colorThree = new System.Windows.Forms.ColorDialog();
             this.picColorThree = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorThree)).BeginInit();
@@ -106,16 +106,16 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "1.";
             // 
-            // pictureBox2
+            // picColorOne
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Red;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(685, 148);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.picColorOne.BackColor = System.Drawing.Color.Red;
+            this.picColorOne.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picColorOne.Location = new System.Drawing.Point(685, 148);
+            this.picColorOne.Name = "picColorOne";
+            this.picColorOne.Size = new System.Drawing.Size(43, 39);
+            this.picColorOne.TabIndex = 6;
+            this.picColorOne.TabStop = false;
+            this.picColorOne.Click += new System.EventHandler(this.picColorOne_Click);
             // 
             // pictureBox3
             // 
@@ -299,7 +299,7 @@
             // 
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextMessage.Location = new System.Drawing.Point(50, 31);
-            this.richTextMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
             this.richTextMessage.Name = "richTextMessage";
             this.richTextMessage.Size = new System.Drawing.Size(356, 63);
             this.richTextMessage.TabIndex = 28;
@@ -422,7 +422,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(1548, 642);
+            this.ClientSize = new System.Drawing.Size(1548, 683);
             this.Controls.Add(this.picColorThree);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textTwoC);
@@ -454,7 +454,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.richTextBox4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.picColorOne);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -464,7 +464,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorThree)).EndInit();
@@ -479,7 +479,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picColorOne;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RichTextBox richTextBox4;
@@ -510,6 +510,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textTwoC;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ColorDialog colorOne;
         private System.Windows.Forms.ColorDialog colorThree;
         private System.Windows.Forms.PictureBox picColorThree;
     }

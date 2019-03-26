@@ -20,7 +20,7 @@ namespace Assign4 {
         Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
         Pen pen;        // The object for drawing things on the graphics object (the graph).
 
-        // The colors for the color selector.  Determines  color of a line.
+        // The colors for the color selector. Determines  color of a line.
         Color oneColor = Color.Red;
         Color twoColor = Color.Red;
         Color threeColor = Color.Red;
@@ -352,6 +352,19 @@ namespace Assign4 {
             }
             // Draw the line for the negative X-axis side
             g.DrawCurve(pen, points);
+        }
+
+        private void picColorOne_Click(object sender, EventArgs e) {
+            // Show the color dialog.
+            DialogResult result = colorOne.ShowDialog();
+            // See if user pressed ok.
+            if (result == DialogResult.OK) {
+                // Set form background to the selected color.
+                this.oneColor = colorOne.Color;
+
+                // Set the color of the color selector.
+                picColorOne.BackColor = colorOne.Color;
+            }
         }
 
         private void picColorThree_Click(object sender, EventArgs e) {
