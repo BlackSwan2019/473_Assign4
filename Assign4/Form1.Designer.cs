@@ -60,6 +60,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.colorThree = new System.Windows.Forms.ColorDialog();
             this.picColorThree = new System.Windows.Forms.PictureBox();
+            this.colorOne = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -75,6 +76,7 @@
             this.pictureBoxGrid.Size = new System.Drawing.Size(620, 620);
             this.pictureBoxGrid.TabIndex = 0;
             this.pictureBoxGrid.TabStop = false;
+            this.pictureBoxGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxGrid_Paint);
             // 
             // label1
             // 
@@ -417,6 +419,10 @@
             this.picColorThree.TabStop = false;
             this.picColorThree.Click += new System.EventHandler(this.picColorThree_Click);
             // 
+            // colorOne
+            // 
+            this.colorOne.Color = System.Drawing.Color.Red;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -510,9 +516,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textTwoC;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ColorDialog colorOne;
+        //private System.Windows.Forms.ColorDialog colorOne;
         private System.Windows.Forms.ColorDialog colorThree;
         private System.Windows.Forms.PictureBox picColorThree;
+        private System.Windows.Forms.ColorDialog colorOne;
     }
 }
 

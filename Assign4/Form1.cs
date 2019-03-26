@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Assign4 {
     public partial class Form1 : Form {
-        int xMin = -100;
-        int xMax = 100;
-        int xInterval = 10;
-        int yMin = -100;
-        int yMax = 100;
-        int yInterval = 10;
+        int xMin = -10000;
+        int xMax = 10000;
+        int xInterval = 1000;
+        int yMin = -10000;
+        int yMax = 10000;
+        int yInterval = 1000;
 
         Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
         Pen pen;        // The object for drawing things on the graphics object (the graph).
@@ -102,7 +102,7 @@ namespace Assign4 {
 
             // Draw each tick mark on the positive X-axis.
             for (int i = 0; i <= amountOfTicksPosX; i++) {
-                    g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
             }
 
             // Draw each tick mark on the negative X-axis.
@@ -140,11 +140,10 @@ namespace Assign4 {
          *  Return:     void
          */
         private void buttonLinearCalculate(object sender, EventArgs e) {
-            drawGrid();
-
             pen.Width = 2;
-            pen.Color = Color.Black;
+            pen.Color = colorOne.Color;
 
+            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             int m = 0;      // Slope of line.
@@ -215,11 +214,10 @@ namespace Assign4 {
         }
 
         private void calcCubic_Click(object sender, EventArgs e) {
-            drawGrid();
-
             pen.Width = 2;
             pen.Color = colorThree.Color;
 
+            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             float a = 1f;
@@ -300,11 +298,10 @@ namespace Assign4 {
         }
 
         private void ButtonQuadraticCalculate(object sender, EventArgs e) {
-            drawGrid();
-
             pen.Width = 2;
             pen.Color = Color.Black;
 
+            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             int a = 0;
@@ -337,18 +334,32 @@ namespace Assign4 {
 
             // For every positive X-axis tick, make an (x,y) point.
             for (int i = 0; i < amountOfTicksPosX; i++) {
-                points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
+                double x = i * pixelsBetweenTicksPosX;
+                double y = (a * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + (b * pixelsBetweenTicksPosX) * i;
+
+                //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
+                points[i] = new Point(halfWidth + (int) x, halfHeight - (int) y - (c * pixelsBetweenTicksPosY));
+
+                Console.WriteLine(x.ToString() + ", " + y.ToString() + " | " + points[i].X + ", " + points[i].Y);
+
             }
-            
+
+
+
             // Draw the line for the positive X-axis side.
-            g.DrawLines(pen, points);
+            g.DrawCurve(pen, points);
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
             points = new Point[amountOfTicksNegX];
 
             // For every negative X-axis tick, make an (x,y) point.
             for (int i = 0; i < amountOfTicksNegX; i++) {
-                points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksPosY)));
+                //points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksPosY)));
+                double x = i * pixelsBetweenTicksPosX;
+                double y = a * (Math.Pow(i, 2) * pixelsBetweenTicksPosX) + b * (i * pixelsBetweenTicksPosX);
+
+                //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
+                points[i] = new Point(halfWidth - (int)x, halfHeight - (int)y - (c * pixelsBetweenTicksPosY));
             }
             // Draw the line for the negative X-axis side
             g.DrawCurve(pen, points);
@@ -390,6 +401,80 @@ namespace Assign4 {
 
         private void textThreeD_TextChanged(object sender, EventArgs e) {
 
+        }
+
+        private void pictureBoxGrid_Paint(object sender, PaintEventArgs e)
+        {
+            // Create Graphics object for the pictureBox (where the graph will be drawn).
+            g = e.Graphics;
+
+            // Make the pen to draw the x and y-axis.
+            pen = new Pen(new SolidBrush(Color.Black));
+            pen.Width = 3;
+
+            // Determine where the middle of each axis of the graphics box is.
+            halfHeight = pictureBoxGrid.Height / 2;
+            halfWidth = pictureBoxGrid.Width / 2;
+
+            // Draw horizontal line.
+            g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
+
+            // Draw vertical line.
+            g.DrawLine(pen, halfWidth, 0, halfWidth, pictureBoxGrid.Height);
+
+            // Set pen width for a tick mark.
+            pen.Width = 1;
+
+
+            // Get how many ticks need to be drawn on positive X-axis.
+            amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
+
+            // Determine how many pixels between ticks on the positive X-axis.
+            pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
+
+            // Get how many ticks need to be drawn on negative X-axis.
+            amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
+
+            // Determine how many pixels between ticks on the negative X-axis.
+            pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
+
+
+            // Get how many ticks need to be drawn on positive Y-axis.
+            amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
+
+            // Determine how many pixels between ticks on the positive Y-axis.
+            pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
+
+            // Get how many ticks need to be drawn on negative Y-axis.
+            amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
+
+            // Determine how many pixels between ticks on the negative Y-axis.
+            pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
+
+
+            // Draw each tick mark on the positive X-axis.
+            for (int i = 0; i <= amountOfTicksPosX; i++)
+            {
+                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+            }
+
+            // Draw each tick mark on the negative X-axis.
+            for (int i = 0; i <= amountOfTicksNegX; i++)
+            {
+                g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+            }
+
+            // Draw each tick mark on the positive Y-axis.
+            for (int i = 0; i <= amountOfTicksPosY; i++)
+            {
+                g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+            }
+
+            // Draw each tick mark on the negative Y-axis.
+            for (int i = 0; i <= amountOfTicksNegY; i++)
+            {
+                g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+            }
         }
     }
 }
