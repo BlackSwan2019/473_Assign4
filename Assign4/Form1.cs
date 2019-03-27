@@ -199,7 +199,7 @@ namespace Assign4 {
 
             // Find (x, y) coordinate of the left side of the line.
             Point leftSideOfLine = points[points.Length - 1];
-
+            
             // Draw the line.
             g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
         }
@@ -444,7 +444,7 @@ namespace Assign4 {
             // Determine how many pixels between ticks on the negative Y-axis.
             pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
 
-
+            
             // Draw each tick mark on the positive X-axis.
             for (int i = 0; i <= amountOfTicksPosX; i++)
             {
