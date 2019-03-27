@@ -57,7 +57,7 @@ namespace Assign4 {
             g = pictureBoxGrid.CreateGraphics();
 
             // Make the pen to draw the x and y-axis.
-            pen = new Pen(new SolidBrush(Color.Black));
+            pen = new Pen(new SolidBrush(Color.White));
             pen.Width = 3;
             
             // Determine where the middle of each axis of the graphics box is.
@@ -146,8 +146,8 @@ namespace Assign4 {
             Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
-            int m = 0;      // Slope of line.
-            int b = 1;      // Y-intercept.
+            int m = 1;      // Slope of line.
+            int b = 0;      // Y-intercept.
 
             int parsedValue;    // Used for input validation.
 
@@ -187,12 +187,7 @@ namespace Assign4 {
                 points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
             }
 
-            // Find (x, y) coordinate of the right side of the line.
             Point rightSideOfLine = points[points.Length - 1];
-
-            // Find the max (x, y) coordinate point of the positive X-axis line.
-            Point maxPositive = new Point(pictureBoxGrid.Width, b - (m * pictureBoxGrid.Width));
-            Point minPositive = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksPosY));
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
             points = new Point[amountOfTicksNegX];
@@ -344,8 +339,6 @@ namespace Assign4 {
 
             }
 
-
-
             // Draw the line for the positive X-axis side.
             g.DrawCurve(pen, points);
 
@@ -409,7 +402,7 @@ namespace Assign4 {
             g = e.Graphics;
 
             // Make the pen to draw the x and y-axis.
-            pen = new Pen(new SolidBrush(Color.Black));
+            pen = new Pen(new SolidBrush(Color.White));
             pen.Width = 3;
 
             // Determine where the middle of each axis of the graphics box is.
@@ -475,6 +468,83 @@ namespace Assign4 {
             {
                 g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
             }
+        }
+
+        private void buttonCircleCalculate(object sender, EventArgs e)
+        {
+            pen.Width = 2;
+            pen.Color = colorOne.Color;
+
+            Graphics g = pictureBoxGrid.CreateGraphics();
+            Point[] points;
+
+            int m = 0;      // Slope of line.
+            int b = 1;      // Y-intercept.
+
+            int parsedValue;    // Used for input validation.
+
+            // If user inputted a non-number for M, then yell at them and don't perform any more action!
+            if (!int.TryParse(textOneM.Text, out parsedValue))
+            {
+                textOneM.Clear();
+                textOneB.Clear();
+
+                richTextMessage.AppendText("Numbers only!");
+
+                return;
+            }
+
+            // If user inputted a non-number for B, then yell at them and don't perform any more action!
+            if (!int.TryParse(textOneB.Text, out parsedValue))
+            {
+                textOneM.Clear();
+                textOneB.Clear();
+
+                richTextMessage.AppendText("Numbers only!");
+
+                return;
+            }
+
+            // Get what the user typed into the inputs for the linear equation.
+            m = Convert.ToInt32(textOneM.Text);
+            b = Convert.ToInt32(textOneB.Text);
+
+            // Get the total amount of X and Y-axis ticks (positive and negative).
+            int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
+            int numberOfYAxisTicks = amountOfTicksPosY + amountOfTicksNegY;
+
+            // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
+            points = new Point[amountOfTicksPosX];
+
+            // For every positive X-axis tick, make an (x,y) point.
+            for (int i = 0; i < amountOfTicksPosX; i++)
+            {
+                points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
+            }
+
+
+
+            // Find (x, y) coordinate of the right side of the line.
+            Point rightSideOfLine = points[points.Length - 1];
+
+            // Find the max (x, y) coordinate point of the positive X-axis line.
+            Point maxPositive = new Point(pictureBoxGrid.Width, b - (m * pictureBoxGrid.Width));
+            Point minPositive = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksPosY));
+            
+            // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
+            points = new Point[amountOfTicksNegX];
+
+            // For every negative X-axis tick, make an (x,y) point.
+            for (int i = 0; i < amountOfTicksNegX; i++)
+            {
+                points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) + m * (i * pixelsBetweenTicksNegY));
+            }
+
+            // Find (x, y) coordinate of the left side of the line.
+            Point leftSideOfLine = points[points.Length - 1];
+
+            // Draw the line.
+            g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
         }
     }
 }
