@@ -28,7 +28,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.picColorOne = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.picColorTwo = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -66,16 +66,17 @@
             this.textFourR = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.colorFour = new System.Windows.Forms.ColorDialog();
+            this.colorTwo = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picColorTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorFour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorThree)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxGrid
             // 
-            this.pictureBoxGrid.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.pictureBoxGrid.BackColor = System.Drawing.Color.Gainsboro;
             this.pictureBoxGrid.Location = new System.Drawing.Point(899, 31);
             this.pictureBoxGrid.Name = "pictureBoxGrid";
             this.pictureBoxGrid.Size = new System.Drawing.Size(620, 620);
@@ -127,15 +128,16 @@
             this.picColorOne.TabStop = false;
             this.picColorOne.Click += new System.EventHandler(this.picColorOne_Click);
             // 
-            // pictureBox3
+            // picColorTwo
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Red;
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(730, 230);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 39);
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.picColorTwo.BackColor = System.Drawing.Color.Red;
+            this.picColorTwo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picColorTwo.Location = new System.Drawing.Point(730, 230);
+            this.picColorTwo.Name = "picColorTwo";
+            this.picColorTwo.Size = new System.Drawing.Size(43, 39);
+            this.picColorTwo.TabIndex = 12;
+            this.picColorTwo.TabStop = false;
+            this.picColorTwo.Click += new System.EventHandler(this.picColorTwo_Click);
             // 
             // label4
             // 
@@ -248,9 +250,9 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(245, 228);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 39);
+            this.label5.Size = new System.Drawing.Size(80, 39);
             this.label5.TabIndex = 10;
-            this.label5.Text = "x²";
+            this.label5.Text = "x² +";
             // 
             // button1
             // 
@@ -262,7 +264,7 @@
             this.button1.TabIndex = 25;
             this.button1.Text = "Calculate!";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonCircleCalculate);
+            this.button1.Click += new System.EventHandler(this.buttonLinearCalculate);
             // 
             // textOneM
             // 
@@ -308,7 +310,6 @@
             this.textThreeC.Size = new System.Drawing.Size(40, 39);
             this.textThreeC.TabIndex = 28;
             this.textThreeC.Text = "";
-            this.textThreeC.TextChanged += new System.EventHandler(this.textThreeC_TextChanged);
             // 
             // label14
             // 
@@ -320,7 +321,6 @@
             this.label14.Size = new System.Drawing.Size(77, 39);
             this.label14.TabIndex = 31;
             this.label14.Text = " x +";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // textThreeD
             // 
@@ -329,7 +329,6 @@
             this.textThreeD.Size = new System.Drawing.Size(40, 39);
             this.textThreeD.TabIndex = 30;
             this.textThreeD.Text = "";
-            this.textThreeD.TextChanged += new System.EventHandler(this.textThreeD_TextChanged);
             // 
             // calcCubic
             // 
@@ -354,7 +353,7 @@
             // textTwoB
             // 
             this.textTwoB.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTwoB.Location = new System.Drawing.Point(318, 234);
+            this.textTwoB.Location = new System.Drawing.Point(322, 234);
             this.textTwoB.Name = "textTwoB";
             this.textTwoB.Size = new System.Drawing.Size(107, 35);
             this.textTwoB.TabIndex = 34;
@@ -486,7 +485,6 @@
             this.label18.Size = new System.Drawing.Size(30, 39);
             this.label18.TabIndex = 48;
             this.label18.Text = "²";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // Form1
             // 
@@ -525,7 +523,7 @@
             this.Controls.Add(this.textThreeB);
             this.Controls.Add(this.textThreeA);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.picColorTwo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label6);
@@ -537,10 +535,9 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picColorTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorFour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picColorThree)).EndInit();
             this.ResumeLayout(false);
@@ -555,7 +552,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox picColorOne;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox picColorTwo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -593,6 +590,7 @@
         private System.Windows.Forms.TextBox textFourR;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ColorDialog colorFour;
+        private System.Windows.Forms.ColorDialog colorTwo;
     }
 }
 
