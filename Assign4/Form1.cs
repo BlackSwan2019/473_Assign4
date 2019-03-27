@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Assign4 {
     public partial class Form1 : Form {
-        int xMin = -10000;
-        int xMax = 10000;
-        int xInterval = 1000;
-        int yMin = -10000;
-        int yMax = 10000;
-        int yInterval = 1000;
+        int xMin = -100;
+        int xMax = 100;
+        int xInterval = 10;
+        int yMin = -100;
+        int yMax = 100;
+        int yInterval = 10;
 
         Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
         Pen pen;        // The object for drawing things on the graphics object (the graph).
@@ -94,10 +94,10 @@ namespace Assign4 {
             int numberOfYAxisTicks = amountOfTicksPosY + amountOfTicksNegY;
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
-            points = new Point[amountOfTicksPosX];
+            points = new Point[amountOfTicksPosX + 2];
 
             // For every positive X-axis tick, make an (x,y) point.
-            for (int i = 0; i < amountOfTicksPosX; i++) {
+            for (int i = 0; i < amountOfTicksPosX + 2; i++) {
                 points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
             }
 
@@ -105,10 +105,10 @@ namespace Assign4 {
             Point rightSideOfLine = points[points.Length - 1];
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
-            points = new Point[amountOfTicksNegX];
+            points = new Point[amountOfTicksNegX + 2];
 
             // For every negative X-axis tick, make an (x,y) point.
-            for (int i = 0; i < amountOfTicksNegX; i++) {
+            for (int i = 0; i < amountOfTicksNegX + 2; i++) {
                 points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) + m * (i * pixelsBetweenTicksNegY));
             }
 
