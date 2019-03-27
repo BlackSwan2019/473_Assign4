@@ -478,27 +478,40 @@ namespace Assign4 {
             Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
-            int m = 0;      // Slope of line.
-            int b = 1;      // Y-intercept.
+            int h = 1;      // X-axs location of center of circle.
+            int k = 1;      // Y-axis location of center of circle.
+            int r = 1;      // Radius of circle.
 
             int parsedValue;    // Used for input validation.
 
-            // If user inputted a non-number for M, then yell at them and don't perform any more action!
-            if (!int.TryParse(textOneM.Text, out parsedValue))
+            // If user inputted a non-number for H, then yell at them and don't perform any more action!
+            if (!int.TryParse(textFourH.Text, out parsedValue))
             {
-                textOneM.Clear();
-                textOneB.Clear();
+                textFourH.Clear();
+                textFourK.Clear();
+                textFourR.Clear();
 
                 richTextMessage.AppendText("Numbers only!");
 
                 return;
             }
 
-            // If user inputted a non-number for B, then yell at them and don't perform any more action!
-            if (!int.TryParse(textOneB.Text, out parsedValue))
+            // If user inputted a non-number for K, then yell at them and don't perform any more action!
+            if (!int.TryParse(textFourK.Text, out parsedValue))
             {
-                textOneM.Clear();
-                textOneB.Clear();
+                textFourH.Clear();
+                textFourK.Clear();
+                textFourR.Clear();
+
+                richTextMessage.AppendText("Numbers only!");
+
+                return;
+            }
+            // If user inputted a non-number for R, then yell at them and don't perform any more action!
+            if (!int.TryParse(textFourR.Text, out parsedValue)) {
+                textFourH.Clear();
+                textFourK.Clear();
+                textFourR.Clear();
 
                 richTextMessage.AppendText("Numbers only!");
 
@@ -506,8 +519,9 @@ namespace Assign4 {
             }
 
             // Get what the user typed into the inputs for the linear equation.
-            m = Convert.ToInt32(textOneM.Text);
-            b = Convert.ToInt32(textOneB.Text);
+            h = Convert.ToInt32(textFourH.Text);
+            k = Convert.ToInt32(textFourK.Text);
+            r = Convert.ToInt32(textFourR.Text);
 
             // Get the total amount of X and Y-axis ticks (positive and negative).
             int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
@@ -516,35 +530,21 @@ namespace Assign4 {
             // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
             points = new Point[amountOfTicksPosX];
 
-            // For every positive X-axis tick, make an (x,y) point.
-            for (int i = 0; i < amountOfTicksPosX; i++)
-            {
-                points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) - m * (i * pixelsBetweenTicksPosY));
-            }
+            Point centerOfCircle = new Point(halfWidth + (h * pixelsBetweenTicksPosX), halfHeight - (k * pixelsBetweenTicksPosY));
 
+            int circleCenterX = halfWidth + (h * pixelsBetweenTicksPosX);
+            int circleCenterY = halfHeight - (k * pixelsBetweenTicksPosY);
 
+            int radiusOfCircle = r * pixelsBetweenTicksPosX;
 
-            // Find (x, y) coordinate of the right side of the line.
-            Point rightSideOfLine = points[points.Length - 1];
+            //Rectangle circleBox = new Rectangle(circleCenterX - radiusOfCircle, circleCenterY - radiusOfCircle, radiusOfCircle * 2, radiusOfCircle * 2);
+            Rectangle circleBox = new Rectangle(centerOfCircle.X - radiusOfCircle, centerOfCircle.Y - radiusOfCircle, radiusOfCircle * 2, radiusOfCircle * 2);
 
-            // Find the max (x, y) coordinate point of the positive X-axis line.
-            Point maxPositive = new Point(pictureBoxGrid.Width, b - (m * pictureBoxGrid.Width));
-            Point minPositive = new Point(halfWidth, halfHeight - (b * pixelsBetweenTicksPosY));
-            
-            // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
-            points = new Point[amountOfTicksNegX];
+            g.DrawEllipse(pen, circleBox);
+        }
 
-            // For every negative X-axis tick, make an (x,y) point.
-            for (int i = 0; i < amountOfTicksNegX; i++)
-            {
-                points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (b * pixelsBetweenTicksPosY) + m * (i * pixelsBetweenTicksNegY));
-            }
+        private void label18_Click(object sender, EventArgs e) {
 
-            // Find (x, y) coordinate of the left side of the line.
-            Point leftSideOfLine = points[points.Length - 1];
-
-            // Draw the line.
-            g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
         }
     }
 }
