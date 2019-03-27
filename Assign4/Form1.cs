@@ -384,6 +384,19 @@ namespace Assign4 {
             }
         }
 
+        private void picColorFour_Click(object sender, EventArgs e) {
+            // Show the color dialog.
+            DialogResult result = colorFour.ShowDialog();
+            // See if user pressed ok.
+            if (result == DialogResult.OK) {
+                // Set form background to the selected color.
+                this.fourColor = colorFour.Color;
+
+                // Set the color of the color selector.
+                picColorFour.BackColor = colorFour.Color;
+            }
+        }
+
         private void textThreeC_TextChanged(object sender, EventArgs e) {
 
         }
