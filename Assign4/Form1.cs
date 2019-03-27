@@ -118,7 +118,6 @@ namespace Assign4 {
             // Draw the line.
             g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
         }
-
        
         private void ButtonQuadraticCalculate(object sender, EventArgs e) {
             pen.Width = 2;
