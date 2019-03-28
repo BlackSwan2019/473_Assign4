@@ -58,14 +58,14 @@ namespace Assign4 {
         }
 
         /*  
-         *  Method:     calcLinear
-         *  
-         *  Purpose:    Calculates a linear equation and draws the line on the Cartesian graph.
-         * 
-         *  Arguments:  none
-         *              
-         *  Return:     void
-         */
+        *  Method:     calcLinear
+        *  
+        *  Purpose:    Calculates a linear equation and draws the line on the Cartesian graph.
+        * 
+        *  Arguments:  none
+        *              
+        *  Return:     void
+        */
         private void calcLinear() {
             pen.Width = 2;
             pen.Color = colorOne.Color;
@@ -109,6 +109,15 @@ namespace Assign4 {
             g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
         }
 
+        /*  
+        *  Method:     calcQuadratic
+        *  
+        *  Purpose:    Calculates a quadratic equation and draws the parabola on the Cartesian graph.
+        * 
+        *  Arguments:  none
+        *              
+        *  Return:     void
+        */
         private void calcQuadratic() {
             pen.Width = 2;
             pen.Color = colorTwo.Color;
@@ -118,19 +127,6 @@ namespace Assign4 {
             int a = 0;
             int b = 1;
             int c = 2;
-
-            int parsedValue;
-
-            // Check to see if user inputted only numbers.
-            if (!int.TryParse(textTwoA.Text, out parsedValue)) {
-                textTwoA.Clear();
-                textTwoB.Clear();
-                textTwoC.Clear();
-
-                richTextMessage.AppendText("Numbers only!");
-
-                return;
-            }
 
             // Get what the user typed into the inputs for the linear equation.
             a = Convert.ToInt32(textTwoA.Text);
@@ -174,6 +170,15 @@ namespace Assign4 {
             g.DrawCurve(pen, points);
         }
 
+        /*  
+        *  Method:     calcCubic
+        *  
+        *  Purpose:    Calculates a cubic equation and draws the line on the Cartesian graph.
+        * 
+        *  Arguments:  none
+        *              
+        *  Return:     void
+        */
         private void calcCubic() {
             pen.Width = 2;
             pen.Color = colorThree.Color;
@@ -184,44 +189,6 @@ namespace Assign4 {
             float b = 1f;
             float c = 1f;
             float d = 0f;
-
-            float parsedValue;
-
-            // Check to see if user inputted only numbers.
-            if (float.TryParse(textThreeA.Text, out parsedValue)) {
-                a = parsedValue;
-            } else {
-                textThreeA.Clear();
-                richTextMessage.Text = "Only Numbers!";
-                return;
-            }
-
-            // Check to see if user inputted only numbers.
-            if (float.TryParse(textThreeB.Text, out parsedValue)) {
-                b = parsedValue;
-            } else {
-                textThreeB.Clear();
-                richTextMessage.Text = "Only Numbers!";
-                return;
-            }
-
-            // Check to see if user inputted only numbers.
-            if (float.TryParse(textThreeC.Text, out parsedValue)) {
-                c = parsedValue;
-            } else {
-                textThreeC.Clear();
-                richTextMessage.Text = "Only Numbers!";
-                return;
-            }
-
-            // Check to see if user inputted only numbers.
-            if (float.TryParse(textThreeD.Text, out parsedValue)) {
-                d = parsedValue;
-            } else {
-                textThreeD.Clear();
-                richTextMessage.Text = "Only Numbers!";
-                return;
-            }
 
             // Get the total amount of X-axis ticks (positive and negative).
             int numberOfXAxisTicks = amountOfTicksPosX + amountOfTicksNegX;
@@ -257,6 +224,15 @@ namespace Assign4 {
             g.DrawCurve(pen, points);
         }
 
+        /*  
+        *  Method:     calcCircle
+        *  
+        *  Purpose:    Calculates a circle equation and draws the circle on the Cartesian graph.
+        * 
+        *  Arguments:  none
+        *              
+        *  Return:     void
+        */
         private void calcCircle() {
             pen.Width = 2;
             pen.Color = colorFour.Color;
@@ -266,40 +242,6 @@ namespace Assign4 {
             int h = 1;      // X-axs location of center of circle.
             int k = 1;      // Y-axis location of center of circle.
             int r = 1;      // Radius of circle.
-
-            int parsedValue;    // Used for input validation.
-
-            // If user inputted a non-number for H, then yell at them and don't perform any more action!
-            if (!int.TryParse(textFourH.Text, out parsedValue)) {
-                textFourH.Clear();
-                textFourK.Clear();
-                textFourR.Clear();
-
-                richTextMessage.AppendText("Numbers only!");
-
-                return;
-            }
-
-            // If user inputted a non-number for K, then yell at them and don't perform any more action!
-            if (!int.TryParse(textFourK.Text, out parsedValue)) {
-                textFourH.Clear();
-                textFourK.Clear();
-                textFourR.Clear();
-
-                richTextMessage.AppendText("Numbers only!");
-
-                return;
-            }
-            // If user inputted a non-number for R, then yell at them and don't perform any more action!
-            if (!int.TryParse(textFourR.Text, out parsedValue)) {
-                textFourH.Clear();
-                textFourK.Clear();
-                textFourR.Clear();
-
-                richTextMessage.AppendText("Numbers only!");
-
-                return;
-            }
 
             // Get what the user typed into the inputs for the linear equation.
             h = Convert.ToInt32(textFourH.Text);
@@ -326,6 +268,16 @@ namespace Assign4 {
             g.DrawEllipse(pen, circleBox);
         }
 
+        /*  
+        *  Method:     pictureBoxGrid_Paint
+        *  
+        *  Purpose:    Does the initial drawing of the Cartesian graph in the picture box.
+        * 
+        *  Arguments:  object               UI component sending event.
+        *              PaintEventArgs       The event.
+        *              
+        *  Return:     void
+        */
         private void pictureBoxGrid_Paint(object sender, PaintEventArgs e) {
             // Create Graphics object for the pictureBox (where the graph will be drawn).
             g = e.Graphics;
@@ -418,6 +370,15 @@ namespace Assign4 {
             }
         }
 
+        /*  
+        *  Method:     drawGraph
+        *  
+        *  Purpose:    Draws the Cartesian graph along with the lines every time someone clicks the Enter button.
+        * 
+        *  Arguments:  none
+        *              
+        *  Return:     void
+        */
         private void drawGraph() {
             // Clear old graphics.
             //pictureBoxGrid.Invalidate();
@@ -515,6 +476,16 @@ namespace Assign4 {
             }
         }
 
+        /*  
+        *  Method:     picColorOne_Click
+        *  
+        *  Purpose:    Handles when the user clicks on the color selection box for the linear equation.
+        * 
+        *  Arguments:  object          UI component sending event.
+        *              EventArgs       The event.
+        *              
+        *  Return:     void
+        */
         private void picColorOne_Click(object sender, EventArgs e) {
             // Show the color dialog.
             DialogResult result = colorOne.ShowDialog();
@@ -528,6 +499,16 @@ namespace Assign4 {
             }
         }
 
+        /*  
+        *  Method:     picColorTwo_Click
+        *  
+        *  Purpose:    Handles when the user clicks on the color selection box for the quadratic equation.
+        * 
+        *  Arguments:  object          UI component sending event.
+        *              EventArgs       The event.
+        *              
+        *  Return:     void
+        */
         private void picColorTwo_Click(object sender, EventArgs e) {
             // Show the color dialog.
             DialogResult result = colorTwo.ShowDialog();
@@ -541,6 +522,16 @@ namespace Assign4 {
             }
         }
 
+        /*  
+        *  Method:     picColorThree_Click
+        *  
+        *  Purpose:    Handles when the user clicks on the color selection box for the cubic equation.
+        * 
+        *  Arguments:  object          UI component sending event.
+        *              EventArgs       The event.
+        *              
+        *  Return:     void
+        */
         private void picColorThree_Click(object sender, EventArgs e) {
             // Show the color dialog.
             DialogResult result = colorThree.ShowDialog();
@@ -554,6 +545,16 @@ namespace Assign4 {
             }
         }
 
+        /*  
+        *  Method:     picColorFour_Click
+        *  
+        *  Purpose:    Handles when the user clicks on the color selection box for the circle equation.
+        * 
+        *  Arguments:  object          UI component sending event.
+        *              EventArgs       The event.
+        *              
+        *  Return:     void
+        */
         private void picColorFour_Click(object sender, EventArgs e) {
             // Show the color dialog.
             DialogResult result = colorFour.ShowDialog();
@@ -565,20 +566,18 @@ namespace Assign4 {
                 // Set the color of the color selector.
                 picColorFour.BackColor = colorFour.Color;
             }
-        }              
-
-        private void button_Parameters(object sender, EventArgs e) {
-            
-            xMin = Convert.ToInt32(textXMin.Text);
-            xMax = 100;
-            xInterval = 10;
-            yMin = -100;
-            yMax = 100;
-            yInterval = 10;
-
-            Refresh();
         }
 
+        /*  
+        *  Method:     buttonCalcAll_Click
+        *  
+        *  Purpose:    Handles when the user clicks on the color selection box for the linear equation.
+        * 
+        *  Arguments:  object          UI component sending event.
+        *              EventArgs       The event.
+        *              
+        *  Return:     void
+        */
         private void buttonCalcAll_Click(object sender, EventArgs e) {
             int parsedValue;    // Used for input validation.
 
@@ -591,7 +590,59 @@ namespace Assign4 {
                 xMin = Convert.ToInt32(textXMin.Text);
 
                 if (xMin > 0 || xMin > xMax) {
-                    richTextMessage.AppendText("xMin must be less or equal to 0.");
+                    richTextMessage.AppendText("xMin must be less than or equal to 0.\n");
+
+                    return;
+                }
+            }
+
+            if (!textXMax.Text.Equals("") && int.TryParse(textXMax.Text, out parsedValue)) {
+                xMax = Convert.ToInt32(textXMax.Text);
+
+                if (xMax < 0) {
+                    richTextMessage.AppendText("xMax must be greater than or equal to 0.\n");
+
+                    return;
+                }
+            }
+
+            if (!textYMin.Text.Equals("") && int.TryParse(textYMin.Text, out parsedValue)) {
+                yMin = Convert.ToInt32(textYMin.Text);
+
+                if (yMin > 0) {
+                    richTextMessage.AppendText("yMin must be less than or equal to 0.\n");
+
+                    return;
+                }
+            }
+
+            if (!textYMax.Text.Equals("") && int.TryParse(textYMax.Text, out parsedValue)) {
+                yMax = Convert.ToInt32(textYMax.Text);
+
+                if (yMax < 0) {
+                    richTextMessage.AppendText("yMax must be greater than or equal to 0.\n");
+
+                    return;
+                }
+            }
+
+            if (!textXInt.Text.Equals("") && int.TryParse(textXInt.Text, out parsedValue)) {
+                xInterval = Convert.ToInt32(textXInt.Text);
+
+                if (xInterval <= 0) {
+                    richTextMessage.AppendText("X interval must be greater than 0.\n");
+
+                    return;
+                }
+            }
+
+            if (!textYInt.Text.Equals("") && int.TryParse(textYInt.Text, out parsedValue)) {
+                yInterval = Convert.ToInt32(textYInt.Text);
+
+                if (yInterval <= 0) {
+                    richTextMessage.AppendText("Y interval must be greater than 0.\n");
+
+                    return;
                 }
             }
 
@@ -652,6 +703,14 @@ namespace Assign4 {
             yMax = 100;
             yInterval = 10;
 
+            // Repopulate the graph parameter input fields with the existing values.
+            textXMax.Text = xMax.ToString();
+            textXMin.Text = xMin.ToString();
+            textXInt.Text = xInterval.ToString();
+            textYMax.Text = yMax.ToString();
+            textYMin.Text = yMin.ToString();
+            textYInt.Text = yInterval.ToString();
+
             textOneM.Text = "";
             textOneB.Text = "";
             textTwoA.Text = "";
@@ -664,6 +723,8 @@ namespace Assign4 {
             textFourH.Text = "";
             textFourK.Text = "";
             textFourR.Text = "";
+
+            richTextMessage.Clear();
 
             drawGraph();
         }
