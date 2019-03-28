@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Assign4 {
     public partial class Form1 : Form {
-        int xMin = -10;
-        int xMax = 10;
-        int xInterval = 1;
-        int yMin = -10;
-        int yMax = 10;
-        int yInterval = 1;
+        int xMin = -100;
+        int xMax = 100;
+        int xInterval = 10;
+        int yMin = -100;
+        int yMax = 100;
+        int yInterval = 10;
 
         Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
         Pen pen;        // The object for drawing things on the graphics object (the graph).
@@ -363,25 +363,48 @@ namespace Assign4 {
             // Determine how many pixels between ticks on the negative Y-axis.
             pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
 
+            string tickLabel;
+            Font tickLabelFont = new Font("Microsoft San Serif", 11);
+            SolidBrush tickLabelBrush = new SolidBrush(Color.LightGray);
 
             // Draw each tick mark on the positive X-axis.
             for (int i = 0; i <= amountOfTicksPosX; i++) {
                 g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth + (i *  pixelsBetweenTicksPosX)) - 10, halfHeight + 5);
+                }
             }
 
             // Draw each tick mark on the negative X-axis.
             for (int i = 0; i <= amountOfTicksNegX; i++) {
                 g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("-{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 14, halfHeight + 5);
+                }
             }
 
             // Draw each tick mark on the positive Y-axis.
             for (int i = 0; i <= amountOfTicksPosY; i++) {
                 g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight - (i * pixelsBetweenTicksPosY)) - 9);
+                }
             }
 
             // Draw each tick mark on the negative Y-axis.
             for (int i = 0; i <= amountOfTicksNegY; i++) {
                 g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("-{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 10);
+                }
             }
         }
 
@@ -432,25 +455,48 @@ namespace Assign4 {
             // Determine how many pixels between ticks on the negative Y-axis.
             pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
 
+            string tickLabel;
+            Font tickLabelFont = new Font("Microsoft San Serif", 11);
+            SolidBrush tickLabelBrush = new SolidBrush(Color.LightGray);
 
             // Draw each tick mark on the positive X-axis.
             for (int i = 0; i <= amountOfTicksPosX; i++) {
                 g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth + (i * pixelsBetweenTicksPosX)) - 10, halfHeight + 5);
+                }
             }
 
             // Draw each tick mark on the negative X-axis.
             for (int i = 0; i <= amountOfTicksNegX; i++) {
                 g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("-{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 14, halfHeight + 5);
+                }
             }
 
             // Draw each tick mark on the positive Y-axis.
             for (int i = 0; i <= amountOfTicksPosY; i++) {
                 g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("-{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 14, halfHeight + 5);
+                }
             }
 
             // Draw each tick mark on the negative Y-axis.
             for (int i = 0; i <= amountOfTicksNegY; i++) {
                 g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+
+                if ((i % 2) == 0 && i != 0) {
+                    tickLabel = String.Format("-{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 10);
+                }
             }
         }
 
@@ -585,8 +631,6 @@ namespace Assign4 {
                     calcCircle();
                 }
             }
-
-            
         }
     }
 }
