@@ -316,6 +316,144 @@ namespace Assign4 {
             g.DrawEllipse(pen, circleBox);
         }
 
+        private void pictureBoxGrid_Paint(object sender, PaintEventArgs e) {
+            // Create Graphics object for the pictureBox (where the graph will be drawn).
+            g = e.Graphics;
+
+            // Make the pen to draw the x and y-axis.
+            pen = new Pen(new SolidBrush(Color.White));
+            pen.Width = 1;
+
+            // Determine where the middle of each axis of the graphics box is.
+            halfHeight = pictureBoxGrid.Height / 2;
+            halfWidth = pictureBoxGrid.Width / 2;
+
+            // Draw horizontal line.
+            g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
+
+            // Draw vertical line.
+            g.DrawLine(pen, halfWidth, 0, halfWidth, pictureBoxGrid.Height);
+
+            // Set pen width for a tick mark.
+            pen.Width = 1;
+
+
+            // Get how many ticks need to be drawn on positive X-axis.
+            amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
+
+            // Determine how many pixels between ticks on the positive X-axis.
+            pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
+
+            // Get how many ticks need to be drawn on negative X-axis.
+            amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
+
+            // Determine how many pixels between ticks on the negative X-axis.
+            pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
+
+
+            // Get how many ticks need to be drawn on positive Y-axis.
+            amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
+
+            // Determine how many pixels between ticks on the positive Y-axis.
+            pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
+
+            // Get how many ticks need to be drawn on negative Y-axis.
+            amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
+
+            // Determine how many pixels between ticks on the negative Y-axis.
+            pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
+
+
+            // Draw each tick mark on the positive X-axis.
+            for (int i = 0; i <= amountOfTicksPosX; i++) {
+                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+            }
+
+            // Draw each tick mark on the negative X-axis.
+            for (int i = 0; i <= amountOfTicksNegX; i++) {
+                g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+            }
+
+            // Draw each tick mark on the positive Y-axis.
+            for (int i = 0; i <= amountOfTicksPosY; i++) {
+                g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+            }
+
+            // Draw each tick mark on the negative Y-axis.
+            for (int i = 0; i <= amountOfTicksNegY; i++) {
+                g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+            }
+        }
+
+        private void drawGraph() {
+            // Create Graphics object for the pictureBox (where the graph will be drawn).
+            g = pictureBoxGrid.CreateGraphics();
+
+            // Make the pen to draw the x and y-axis.
+            pen = new Pen(new SolidBrush(Color.White));
+            pen.Width = 1;
+
+            // Determine where the middle of each axis of the graphics box is.
+            halfHeight = pictureBoxGrid.Height / 2;
+            halfWidth = pictureBoxGrid.Width / 2;
+
+            // Draw horizontal line.
+            g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
+
+            // Draw vertical line.
+            g.DrawLine(pen, halfWidth, 0, halfWidth, pictureBoxGrid.Height);
+
+            // Set pen width for a tick mark.
+            pen.Width = 1;
+
+
+            // Get how many ticks need to be drawn on positive X-axis.
+            amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
+
+            // Determine how many pixels between ticks on the positive X-axis.
+            pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
+
+            // Get how many ticks need to be drawn on negative X-axis.
+            amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
+
+            // Determine how many pixels between ticks on the negative X-axis.
+            pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
+
+
+            // Get how many ticks need to be drawn on positive Y-axis.
+            amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
+
+            // Determine how many pixels between ticks on the positive Y-axis.
+            pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
+
+            // Get how many ticks need to be drawn on negative Y-axis.
+            amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
+
+            // Determine how many pixels between ticks on the negative Y-axis.
+            pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
+
+
+            // Draw each tick mark on the positive X-axis.
+            for (int i = 0; i <= amountOfTicksPosX; i++) {
+                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+            }
+
+            // Draw each tick mark on the negative X-axis.
+            for (int i = 0; i <= amountOfTicksNegX; i++) {
+                g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+            }
+
+            // Draw each tick mark on the positive Y-axis.
+            for (int i = 0; i <= amountOfTicksPosY; i++) {
+                g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+            }
+
+            // Draw each tick mark on the negative Y-axis.
+            for (int i = 0; i <= amountOfTicksNegY; i++) {
+                g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+            }
+        }
+
         private void picColorOne_Click(object sender, EventArgs e) {
             // Show the color dialog.
             DialogResult result = colorOne.ShowDialog();
@@ -366,81 +504,7 @@ namespace Assign4 {
                 // Set the color of the color selector.
                 picColorFour.BackColor = colorFour.Color;
             }
-        }
-
-        private void pictureBoxGrid_Paint(object sender, PaintEventArgs e)
-        {
-            // Create Graphics object for the pictureBox (where the graph will be drawn).
-            g = e.Graphics;
-
-            // Make the pen to draw the x and y-axis.
-            pen = new Pen(new SolidBrush(Color.White));
-            pen.Width = 3;
-
-            // Determine where the middle of each axis of the graphics box is.
-            halfHeight = pictureBoxGrid.Height / 2;
-            halfWidth = pictureBoxGrid.Width / 2;
-
-            // Draw horizontal line.
-            g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
-
-            // Draw vertical line.
-            g.DrawLine(pen, halfWidth, 0, halfWidth, pictureBoxGrid.Height);
-
-            // Set pen width for a tick mark.
-            pen.Width = 1;
-
-
-            // Get how many ticks need to be drawn on positive X-axis.
-            amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
-
-            // Determine how many pixels between ticks on the positive X-axis.
-            pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
-
-            // Get how many ticks need to be drawn on negative X-axis.
-            amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
-
-            // Determine how many pixels between ticks on the negative X-axis.
-            pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
-
-
-            // Get how many ticks need to be drawn on positive Y-axis.
-            amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
-
-            // Determine how many pixels between ticks on the positive Y-axis.
-            pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
-
-            // Get how many ticks need to be drawn on negative Y-axis.
-            amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
-
-            // Determine how many pixels between ticks on the negative Y-axis.
-            pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
-
-            
-            // Draw each tick mark on the positive X-axis.
-            for (int i = 0; i <= amountOfTicksPosX; i++)
-            {
-                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
-            }
-
-            // Draw each tick mark on the negative X-axis.
-            for (int i = 0; i <= amountOfTicksNegX; i++)
-            {
-                g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
-            }
-
-            // Draw each tick mark on the positive Y-axis.
-            for (int i = 0; i <= amountOfTicksPosY; i++)
-            {
-                g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
-            }
-
-            // Draw each tick mark on the negative Y-axis.
-            for (int i = 0; i <= amountOfTicksNegY; i++)
-            {
-                g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
-            }
-        }
+        }              
 
         private void button_Parameters(object sender, EventArgs e) {
             
@@ -457,34 +521,72 @@ namespace Assign4 {
         private void buttonCalcAll_Click(object sender, EventArgs e) {
             int parsedValue;    // Used for input validation.
 
+            // Only change graph parameters if input fields are not blank and they have numbers in them.
+            if (!textXMax.Text.Equals("") && int.TryParse(textXMax.Text, out parsedValue)) {
+                xMax = Convert.ToInt32(textXMax.Text);
+            }
+            
+            if (!textXMin.Text.Equals("") && int.TryParse(textXMin.Text, out parsedValue)) {
+                xMin = Convert.ToInt32(textXMin.Text);
+            }
+
+            if (!textXInt.Text.Equals("") && int.TryParse(textXInt.Text, out parsedValue)) {
+                xInterval = Convert.ToInt32(textXInt.Text);
+            }
+
+            if (!textYMax.Text.Equals("") && int.TryParse(textYMax.Text, out parsedValue)) {
+                yMax = Convert.ToInt32(textYMax.Text);
+            }
+
+            if (!textYMin.Text.Equals("") && int.TryParse(textYMin.Text, out parsedValue)) {
+                yMin = Convert.ToInt32(textYMin.Text);
+            }
+
+            if (!textYInt.Text.Equals("") && int.TryParse(textYInt.Text, out parsedValue)) {
+                yInterval = Convert.ToInt32(textYInt.Text);
+            }
+
+            // Get user's graph parameters.
+            //xMax = Convert.ToInt32(textXMax.Text);
+            //xMin = Convert.ToInt32(textXMin.Text);
+            //xInterval = Convert.ToInt32(textXInt.Text);
+            //yMax = Convert.ToInt32(textYMax.Text);
+            //yMin = Convert.ToInt32(textYMin.Text);
+            //yInterval = Convert.ToInt32(textYInt.Text);
+
+            // Redraw the graph.
+            drawGraph();
+
             // Only process formulas if 1. Fields aren't blank and 2. There are numbers in the fields.
             if (!textOneB.Text.Equals("") && !textOneM.Text.Equals("")) {
-                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                // Only if user inputted a number, then perform calculation and drawing.
                 if (int.TryParse(textOneM.Text, out parsedValue) && int.TryParse(textOneB.Text, out parsedValue)) {
                     calcLinear();
                 }
             }
 
             if (!textTwoA.Text.Equals("") && !textTwoB.Text.Equals("") && !textTwoC.Text.Equals("")) {
-                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                // Only if user inputted a number, then perform calculation and drawing.
                 if (int.TryParse(textTwoA.Text, out parsedValue) && int.TryParse(textTwoB.Text, out parsedValue) && int.TryParse(textTwoC.Text, out parsedValue)) {
                     calcQuadratic();
                 }
             }
 
             if (!textThreeA.Text.Equals("") && !textThreeB.Text.Equals("") && !textThreeC.Text.Equals("") && !textThreeD.Text.Equals("")) {
-                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                // Only if user inputted a number, then perform calculation and drawing.
                 if (int.TryParse(textThreeA.Text, out parsedValue) && int.TryParse(textThreeB.Text, out parsedValue) && int.TryParse(textThreeC.Text, out parsedValue) && int.TryParse(textThreeD.Text, out parsedValue)) {
                     calcCubic();
                 }
             }
 
-            if (!textFourH.Text.Equals("") && !textFourK.Text.Equals("") && !textFourR.Text.Equals("") && !textThreeD.Text.Equals("")) {
-                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+            if (!textFourH.Text.Equals("") && !textFourK.Text.Equals("") && !textFourR.Text.Equals("") && !textFourR.Text.Equals("")) {
+                // Only if user inputted a number, then perform calculation and drawing.
                 if (int.TryParse(textFourH.Text, out parsedValue) && int.TryParse(textFourK.Text, out parsedValue) && int.TryParse(textFourR.Text, out parsedValue)) {
                     calcCircle();
                 }
             }
+
+            
         }
     }
 }

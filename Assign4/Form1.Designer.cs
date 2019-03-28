@@ -90,7 +90,7 @@
             // 
             // pictureBoxGrid
             // 
-            this.pictureBoxGrid.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBoxGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pictureBoxGrid.Location = new System.Drawing.Point(774, 12);
             this.pictureBoxGrid.Name = "pictureBoxGrid";
             this.pictureBoxGrid.Size = new System.Drawing.Size(620, 620);
@@ -101,7 +101,7 @@
             // richTextMessage
             // 
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextMessage.Location = new System.Drawing.Point(19, 527);
+            this.richTextMessage.Location = new System.Drawing.Point(19, 550);
             this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
             this.richTextMessage.Name = "richTextMessage";
             this.richTextMessage.Size = new System.Drawing.Size(428, 82);
@@ -628,7 +628,7 @@
             // 
             this.buttonCalcAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCalcAll.ForeColor = System.Drawing.Color.Black;
-            this.buttonCalcAll.Location = new System.Drawing.Point(549, 555);
+            this.buttonCalcAll.Location = new System.Drawing.Point(601, 578);
             this.buttonCalcAll.Name = "buttonCalcAll";
             this.buttonCalcAll.Size = new System.Drawing.Size(167, 54);
             this.buttonCalcAll.TabIndex = 58;
@@ -640,7 +640,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(16, 511);
+            this.label25.Location = new System.Drawing.Point(16, 534);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(50, 13);
             this.label25.TabIndex = 59;
@@ -650,7 +650,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1410, 654);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.richTextMessage);
