@@ -44,16 +44,15 @@ namespace Assign4 {
         }
 
         /*  
-         *  Method:     buttonLinearCalculate
+         *  Method:     calcLinear
          *  
          *  Purpose:    Calculates a linear equation and draws the line on the Cartesian graph.
          * 
-         *  Arguments:  object      The publisher of the event.e
-         *              EventArgs   Event data from the publisher.
+         *  Arguments:  none
          *              
          *  Return:     void
          */
-        private void buttonLinearCalculate(object sender, EventArgs e) {
+        private void calcLinear() {
             pen.Width = 2;
             pen.Color = colorOne.Color;
 
@@ -114,12 +113,12 @@ namespace Assign4 {
 
             // Find (x, y) coordinate of left side of line.
             Point leftSideOfLine = points[points.Length - 1];
-            
+
             // Draw the line.
             g.DrawLine(pen, leftSideOfLine, rightSideOfLine);
         }
-       
-        private void ButtonQuadraticCalculate(object sender, EventArgs e) {
+
+        private void calcQuadratic() {
             pen.Width = 2;
             pen.Color = colorTwo.Color;
 
@@ -160,7 +159,7 @@ namespace Assign4 {
                 double y = (a * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + (b * pixelsBetweenTicksPosX) * i;
 
                 //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
-                points[i] = new Point(halfWidth + (int) x, halfHeight - (int) y - (c * pixelsBetweenTicksPosY));
+                points[i] = new Point(halfWidth + (int)x, halfHeight - (int)y - (c * pixelsBetweenTicksPosY));
 
                 Console.WriteLine(x.ToString() + ", " + y.ToString() + " | " + points[i].X + ", " + points[i].Y);
 
@@ -185,7 +184,7 @@ namespace Assign4 {
             g.DrawCurve(pen, points);
         }
 
-        private void calcCubic_Click(object sender, EventArgs e) {
+        private void calcCubic() {
             pen.Width = 2;
             pen.Color = colorThree.Color;
 
@@ -269,7 +268,7 @@ namespace Assign4 {
             g.DrawCurve(pen, points);
         }
 
-        private void buttonCircleCalculate(object sender, EventArgs e) {
+        private void calcCircle() {
             pen.Width = 2;
             pen.Color = colorFour.Color;
 
@@ -474,6 +473,14 @@ namespace Assign4 {
             yMax = 100;
             yInterval = 10;
 
+            Refresh();
+        }
+
+        private void buttonCalcAll_Click(object sender, EventArgs e) {
+            calcLinear();
+            calcQuadratic();
+            calcCubic();
+            calcCircle();
         }
     }
 }

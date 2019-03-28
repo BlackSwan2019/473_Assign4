@@ -43,7 +43,6 @@
             this.textXMax = new System.Windows.Forms.TextBox();
             this.textXMin = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.buttonSetParameters = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,19 +57,15 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.picColorFour = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.textOneM = new System.Windows.Forms.TextBox();
             this.textOneB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.calcCubic = new System.Windows.Forms.Button();
             this.textTwoA = new System.Windows.Forms.TextBox();
             this.textTwoB = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textTwoC = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.picColorThree = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -83,6 +78,7 @@
             this.textThreeC = new System.Windows.Forms.TextBox();
             this.textThreeD = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonCalcAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).BeginInit();
@@ -95,7 +91,7 @@
             // pictureBoxGrid
             // 
             this.pictureBoxGrid.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBoxGrid.Location = new System.Drawing.Point(899, 31);
+            this.pictureBoxGrid.Location = new System.Drawing.Point(856, 12);
             this.pictureBoxGrid.Name = "pictureBoxGrid";
             this.pictureBoxGrid.Size = new System.Drawing.Size(620, 620);
             this.pictureBoxGrid.TabIndex = 0;
@@ -105,7 +101,7 @@
             // richTextMessage
             // 
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextMessage.Location = new System.Drawing.Point(19, 552);
+            this.richTextMessage.Location = new System.Drawing.Point(19, 533);
             this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
             this.richTextMessage.Name = "richTextMessage";
             this.richTextMessage.Size = new System.Drawing.Size(823, 99);
@@ -134,7 +130,7 @@
             this.groupBox1.Controls.Add(this.textXInt);
             this.groupBox1.Controls.Add(this.textXMax);
             this.groupBox1.Controls.Add(this.textXMin);
-            this.groupBox1.Location = new System.Drawing.Point(131, 343);
+            this.groupBox1.Location = new System.Drawing.Point(85, 343);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(637, 110);
             this.groupBox1.TabIndex = 49;
@@ -253,22 +249,11 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(16, 537);
+            this.label25.Location = new System.Drawing.Point(16, 518);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(55, 13);
+            this.label25.Size = new System.Drawing.Size(50, 13);
             this.label25.TabIndex = 50;
-            this.label25.Text = "Messages";
-            // 
-            // buttonSetParameters
-            // 
-            this.buttonSetParameters.ForeColor = System.Drawing.Color.Black;
-            this.buttonSetParameters.Location = new System.Drawing.Point(394, 473);
-            this.buttonSetParameters.Name = "buttonSetParameters";
-            this.buttonSetParameters.Size = new System.Drawing.Size(106, 32);
-            this.buttonSetParameters.TabIndex = 55;
-            this.buttonSetParameters.Text = "Set Parameters";
-            this.buttonSetParameters.UseVisualStyleBackColor = true;
-            this.buttonSetParameters.Click += new System.EventHandler(this.button_Parameters);
+            this.label25.Text = "Error Log";
             // 
             // label1
             // 
@@ -424,18 +409,6 @@
             this.picColorFour.TabStop = false;
             this.picColorFour.Click += new System.EventHandler(this.picColorFour_Click);
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(734, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 39);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Calculate!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonLinearCalculate);
-            // 
             // textOneM
             // 
             this.textOneM.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -474,18 +447,6 @@
             this.label14.TabIndex = 31;
             this.label14.Text = " x +";
             // 
-            // calcCubic
-            // 
-            this.calcCubic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calcCubic.ForeColor = System.Drawing.Color.Black;
-            this.calcCubic.Location = new System.Drawing.Point(733, 147);
-            this.calcCubic.Name = "calcCubic";
-            this.calcCubic.Size = new System.Drawing.Size(114, 39);
-            this.calcCubic.TabIndex = 32;
-            this.calcCubic.Text = "Calculate!";
-            this.calcCubic.UseVisualStyleBackColor = true;
-            this.calcCubic.Click += new System.EventHandler(this.calcCubic_Click);
-            // 
             // textTwoA
             // 
             this.textTwoA.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -521,18 +482,6 @@
             this.textTwoC.Size = new System.Drawing.Size(69, 35);
             this.textTwoC.TabIndex = 36;
             // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(733, 89);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(114, 39);
-            this.button2.TabIndex = 37;
-            this.button2.Text = "Calculate!";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.ButtonQuadraticCalculate);
-            // 
             // picColorThree
             // 
             this.picColorThree.BackColor = System.Drawing.Color.Red;
@@ -543,18 +492,6 @@
             this.picColorThree.TabIndex = 38;
             this.picColorThree.TabStop = false;
             this.picColorThree.Click += new System.EventHandler(this.picColorThree_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(733, 207);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 39);
-            this.button3.TabIndex = 39;
-            this.button3.Text = "Calculate!";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.buttonCircleCalculate);
             // 
             // label11
             // 
@@ -680,35 +617,43 @@
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.picColorFour);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.textOneM);
-            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.textOneB);
             this.groupBox2.Controls.Add(this.picColorThree);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.textTwoC);
-            this.groupBox2.Controls.Add(this.calcCubic);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.textTwoA);
             this.groupBox2.Controls.Add(this.textTwoB);
             this.groupBox2.Location = new System.Drawing.Point(19, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(853, 271);
+            this.groupBox2.Size = new System.Drawing.Size(749, 271);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Formulae";
+            // 
+            // buttonCalcAll
+            // 
+            this.buttonCalcAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCalcAll.ForeColor = System.Drawing.Color.Black;
+            this.buttonCalcAll.Location = new System.Drawing.Point(349, 298);
+            this.buttonCalcAll.Name = "buttonCalcAll";
+            this.buttonCalcAll.Size = new System.Drawing.Size(114, 39);
+            this.buttonCalcAll.TabIndex = 58;
+            this.buttonCalcAll.Text = "Calculate!";
+            this.buttonCalcAll.UseVisualStyleBackColor = true;
+            this.buttonCalcAll.Click += new System.EventHandler(this.buttonCalcAll_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.ClientSize = new System.Drawing.Size(1548, 683);
+            this.ClientSize = new System.Drawing.Size(1501, 654);
+            this.Controls.Add(this.buttonCalcAll);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.buttonSetParameters);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.richTextMessage);
@@ -752,7 +697,6 @@
         private System.Windows.Forms.TextBox textXMax;
         private System.Windows.Forms.TextBox textXMin;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button buttonSetParameters;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -767,19 +711,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox picColorFour;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textOneM;
         private System.Windows.Forms.TextBox textOneB;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button calcCubic;
         private System.Windows.Forms.TextBox textTwoA;
         private System.Windows.Forms.TextBox textTwoB;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textTwoC;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox picColorThree;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -792,6 +732,7 @@
         private System.Windows.Forms.TextBox textThreeC;
         private System.Windows.Forms.TextBox textThreeD;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonCalcAll;
     }
 }
 
