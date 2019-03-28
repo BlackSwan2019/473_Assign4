@@ -41,6 +41,31 @@ namespace Assign4 {
 
         public Form1() {
             InitializeComponent();
+
+            // Populate the graph parameter input fields with the existing values.
+            textXMax.Text = xMax.ToString();
+            textXMin.Text = xMin.ToString();
+            textXInt.Text = xInterval.ToString();
+            textYMax.Text = yMax.ToString();
+            textYMin.Text = yMin.ToString();
+            textYInt.Text = yInterval.ToString();
+
+            // Set the color of the color selector.
+            picColorOne.BackColor = Color.Black;
+            picColorTwo.BackColor = Color.Red;
+            picColorThree.BackColor = Color.Green;
+            picColorFour.BackColor = Color.Blue;
+
+            ToolTip toolTip = new ToolTip();
+            // Set up the delays for the ToolTip.
+            toolTip.AutoPopDelay = 5000;
+            toolTip.InitialDelay = 1000;
+            toolTip.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip.ShowAlways = true;
+
+            
+
         }
 
         /*  
@@ -56,7 +81,6 @@ namespace Assign4 {
             pen.Width = 2;
             pen.Color = colorOne.Color;
 
-            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             int m = 1;      // Slope of line.
@@ -100,7 +124,6 @@ namespace Assign4 {
             pen.Width = 2;
             pen.Color = colorTwo.Color;
 
-            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             int a = 0;
@@ -166,7 +189,6 @@ namespace Assign4 {
             pen.Width = 2;
             pen.Color = colorThree.Color;
 
-            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             float a = 1f;
@@ -250,7 +272,6 @@ namespace Assign4 {
             pen.Width = 2;
             pen.Color = colorFour.Color;
 
-            Graphics g = pictureBoxGrid.CreateGraphics();
             Point[] points;
 
             int h = 1;      // X-axs location of center of circle.
@@ -322,7 +343,7 @@ namespace Assign4 {
 
             // Make the pen to draw the x and y-axis.
             pen = new Pen(new SolidBrush(Color.White));
-            pen.Width = 1;
+            pen.Width = 1;         
 
             // Determine where the middle of each axis of the graphics box is.
             halfHeight = pictureBoxGrid.Height / 2;
@@ -409,8 +430,14 @@ namespace Assign4 {
         }
 
         private void drawGraph() {
+            // Clear old graphics.
+            //pictureBoxGrid.Invalidate();
+            
             // Create Graphics object for the pictureBox (where the graph will be drawn).
             g = pictureBoxGrid.CreateGraphics();
+
+            g.Clear(Color.FromArgb(64, 64, 64));
+
 
             // Make the pen to draw the x and y-axis.
             pen = new Pen(new SolidBrush(Color.White));
@@ -574,6 +601,10 @@ namespace Assign4 {
             
             if (!textXMin.Text.Equals("") && int.TryParse(textXMin.Text, out parsedValue)) {
                 xMin = Convert.ToInt32(textXMin.Text);
+
+                if (xMin > 0 || xMin > xMax) {
+                    richTextMessage.AppendText("xMin must be less or equal to 0.");
+                }
             }
 
             if (!textXInt.Text.Equals("") && int.TryParse(textXInt.Text, out parsedValue)) {
@@ -591,14 +622,6 @@ namespace Assign4 {
             if (!textYInt.Text.Equals("") && int.TryParse(textYInt.Text, out parsedValue)) {
                 yInterval = Convert.ToInt32(textYInt.Text);
             }
-
-            // Get user's graph parameters.
-            //xMax = Convert.ToInt32(textXMax.Text);
-            //xMin = Convert.ToInt32(textXMin.Text);
-            //xInterval = Convert.ToInt32(textXInt.Text);
-            //yMax = Convert.ToInt32(textYMax.Text);
-            //yMin = Convert.ToInt32(textYMin.Text);
-            //yInterval = Convert.ToInt32(textYInt.Text);
 
             // Redraw the graph.
             drawGraph();
