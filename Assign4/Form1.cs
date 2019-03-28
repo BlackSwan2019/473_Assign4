@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Assign4 {
     public partial class Form1 : Form {
-        int xMin = -100;
-        int xMax = 100;
-        int xInterval = 10;
-        int yMin = -100;
-        int yMax = 100;
-        int yInterval = 10;
+        int xMin = -10;
+        int xMax = 10;
+        int xInterval = 1;
+        int yMin = -10;
+        int yMax = 10;
+        int yInterval = 1;
 
         Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
         Pen pen;        // The object for drawing things on the graphics object (the graph).
@@ -463,6 +463,17 @@ namespace Assign4 {
             {
                 g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
             }
+        }
+
+        private void button_Parameters(object sender, EventArgs e) {
+            
+            xMin = Convert.ToInt32(textXMin.Text);
+            xMax = 100;
+            xInterval = 10;
+            yMin = -100;
+            yMax = 100;
+            yInterval = 10;
+
         }
     }
 }
