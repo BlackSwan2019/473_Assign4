@@ -55,17 +55,6 @@ namespace Assign4 {
             picColorTwo.BackColor = Color.Red;
             picColorThree.BackColor = Color.Green;
             picColorFour.BackColor = Color.Blue;
-
-            ToolTip toolTip = new ToolTip();
-            // Set up the delays for the ToolTip.
-            toolTip.AutoPopDelay = 5000;
-            toolTip.InitialDelay = 1000;
-            toolTip.ReshowDelay = 500;
-            // Force the ToolTip text to be displayed whether or not the form is active.
-            toolTip.ShowAlways = true;
-
-            
-
         }
 
         /*  
@@ -501,7 +490,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 13, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksNegX)) - 13, halfHeight + 5);
                 }
             }
 
@@ -521,7 +510,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 8);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksNegY)) - 8);
                 }
             }
         }
@@ -653,6 +642,30 @@ namespace Assign4 {
                     calcCircle();
                 }
             }
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e) {
+            xMin = -100;
+            xMax = 100;
+            xInterval = 10;
+            yMin = -100;
+            yMax = 100;
+            yInterval = 10;
+
+            textOneM.Text = "";
+            textOneB.Text = "";
+            textTwoA.Text = "";
+            textTwoB.Text = "";
+            textTwoC.Text = "";
+            textThreeA.Text = "";
+            textThreeB.Text = "";
+            textThreeC.Text = "";
+            textThreeD.Text = "";
+            textFourH.Text = "";
+            textFourK.Text = "";
+            textFourR.Text = "";
+
+            drawGraph();
         }
     }
 }

@@ -78,6 +78,10 @@
             this.textThreeC = new System.Windows.Forms.TextBox();
             this.textThreeD = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -85,6 +89,7 @@
             this.buttonCalcAll = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonReset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).BeginInit();
@@ -106,10 +111,12 @@
             // 
             // richTextMessage
             // 
+            this.richTextMessage.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextMessage.Location = new System.Drawing.Point(19, 597);
             this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
             this.richTextMessage.Name = "richTextMessage";
+            this.richTextMessage.ReadOnly = true;
             this.richTextMessage.Size = new System.Drawing.Size(428, 82);
             this.richTextMessage.TabIndex = 28;
             this.richTextMessage.Text = "";
@@ -209,7 +216,7 @@
             this.textYInt.Location = new System.Drawing.Point(225, 128);
             this.textYInt.Name = "textYInt";
             this.textYInt.Size = new System.Drawing.Size(65, 35);
-            this.textYInt.TabIndex = 39;
+            this.textYInt.TabIndex = 18;
             // 
             // textYMax
             // 
@@ -217,7 +224,7 @@
             this.textYMax.Location = new System.Drawing.Point(124, 128);
             this.textYMax.Name = "textYMax";
             this.textYMax.Size = new System.Drawing.Size(65, 35);
-            this.textYMax.TabIndex = 38;
+            this.textYMax.TabIndex = 17;
             // 
             // textYMin
             // 
@@ -225,7 +232,7 @@
             this.textYMin.Location = new System.Drawing.Point(25, 128);
             this.textYMin.Name = "textYMin";
             this.textYMin.Size = new System.Drawing.Size(65, 35);
-            this.textYMin.TabIndex = 37;
+            this.textYMin.TabIndex = 16;
             // 
             // textXInt
             // 
@@ -233,7 +240,7 @@
             this.textXInt.Location = new System.Drawing.Point(225, 52);
             this.textXInt.Name = "textXInt";
             this.textXInt.Size = new System.Drawing.Size(65, 35);
-            this.textXInt.TabIndex = 36;
+            this.textXInt.TabIndex = 15;
             // 
             // textXMax
             // 
@@ -241,7 +248,7 @@
             this.textXMax.Location = new System.Drawing.Point(124, 52);
             this.textXMax.Name = "textXMax";
             this.textXMax.Size = new System.Drawing.Size(65, 35);
-            this.textXMax.TabIndex = 35;
+            this.textXMax.TabIndex = 14;
             // 
             // textXMin
             // 
@@ -249,7 +256,7 @@
             this.textXMin.Location = new System.Drawing.Point(25, 52);
             this.textXMin.Name = "textXMin";
             this.textXMin.Size = new System.Drawing.Size(65, 35);
-            this.textXMin.TabIndex = 34;
+            this.textXMin.TabIndex = 13;
             // 
             // label1
             // 
@@ -412,7 +419,7 @@
             this.textOneM.Location = new System.Drawing.Point(108, 53);
             this.textOneM.Name = "textOneM";
             this.textOneM.Size = new System.Drawing.Size(69, 35);
-            this.textOneM.TabIndex = 26;
+            this.textOneM.TabIndex = 1;
             this.toolTip.SetToolTip(this.textOneM, "Slope of the line.");
             // 
             // textOneB
@@ -421,7 +428,7 @@
             this.textOneB.Location = new System.Drawing.Point(236, 53);
             this.textOneB.Name = "textOneB";
             this.textOneB.Size = new System.Drawing.Size(69, 35);
-            this.textOneB.TabIndex = 27;
+            this.textOneB.TabIndex = 2;
             this.toolTip.SetToolTip(this.textOneB, "Y-intercept");
             // 
             // label13
@@ -452,7 +459,7 @@
             this.textTwoA.Location = new System.Drawing.Point(107, 131);
             this.textTwoA.Name = "textTwoA";
             this.textTwoA.Size = new System.Drawing.Size(69, 35);
-            this.textTwoA.TabIndex = 33;
+            this.textTwoA.TabIndex = 3;
             // 
             // textTwoB
             // 
@@ -460,7 +467,7 @@
             this.textTwoB.Location = new System.Drawing.Point(244, 131);
             this.textTwoB.Name = "textTwoB";
             this.textTwoB.Size = new System.Drawing.Size(69, 35);
-            this.textTwoB.TabIndex = 34;
+            this.textTwoB.TabIndex = 4;
             // 
             // label15
             // 
@@ -479,7 +486,7 @@
             this.textTwoC.Location = new System.Drawing.Point(364, 131);
             this.textTwoC.Name = "textTwoC";
             this.textTwoC.Size = new System.Drawing.Size(69, 35);
-            this.textTwoC.TabIndex = 36;
+            this.textTwoC.TabIndex = 5;
             // 
             // picColorThree
             // 
@@ -529,7 +536,7 @@
             this.textFourH.Location = new System.Drawing.Point(119, 290);
             this.textFourH.Name = "textFourH";
             this.textFourH.Size = new System.Drawing.Size(69, 35);
-            this.textFourH.TabIndex = 45;
+            this.textFourH.TabIndex = 10;
             // 
             // textFourK
             // 
@@ -537,7 +544,7 @@
             this.textFourK.Location = new System.Drawing.Point(299, 287);
             this.textFourK.Name = "textFourK";
             this.textFourK.Size = new System.Drawing.Size(69, 35);
-            this.textFourK.TabIndex = 46;
+            this.textFourK.TabIndex = 11;
             // 
             // textFourR
             // 
@@ -545,7 +552,7 @@
             this.textFourR.Location = new System.Drawing.Point(423, 287);
             this.textFourR.Name = "textFourR";
             this.textFourR.Size = new System.Drawing.Size(69, 35);
-            this.textFourR.TabIndex = 47;
+            this.textFourR.TabIndex = 12;
             // 
             // label18
             // 
@@ -564,7 +571,7 @@
             this.textThreeA.Location = new System.Drawing.Point(106, 214);
             this.textThreeA.Name = "textThreeA";
             this.textThreeA.Size = new System.Drawing.Size(69, 35);
-            this.textThreeA.TabIndex = 51;
+            this.textThreeA.TabIndex = 6;
             // 
             // textThreeB
             // 
@@ -572,7 +579,7 @@
             this.textThreeB.Location = new System.Drawing.Point(243, 212);
             this.textThreeB.Name = "textThreeB";
             this.textThreeB.Size = new System.Drawing.Size(69, 35);
-            this.textThreeB.TabIndex = 52;
+            this.textThreeB.TabIndex = 7;
             // 
             // textThreeC
             // 
@@ -580,7 +587,7 @@
             this.textThreeC.Location = new System.Drawing.Point(386, 212);
             this.textThreeC.Name = "textThreeC";
             this.textThreeC.Size = new System.Drawing.Size(69, 35);
-            this.textThreeC.TabIndex = 53;
+            this.textThreeC.TabIndex = 8;
             // 
             // textThreeD
             // 
@@ -588,10 +595,14 @@
             this.textThreeD.Location = new System.Drawing.Point(521, 214);
             this.textThreeD.Name = "textThreeD";
             this.textThreeD.Size = new System.Drawing.Size(69, 35);
-            this.textThreeD.TabIndex = 54;
+            this.textThreeD.TabIndex = 9;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label33);
+            this.groupBox2.Controls.Add(this.label32);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Controls.Add(this.label30);
             this.groupBox2.Controls.Add(this.label29);
             this.groupBox2.Controls.Add(this.label28);
             this.groupBox2.Controls.Add(this.label27);
@@ -636,6 +647,55 @@
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Equations";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.Location = new System.Drawing.Point(222, 272);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(14, 13);
+            this.label33.TabIndex = 61;
+            this.label33.Text = "?";
+            this.toolTip.SetToolTip(this.label33, "h is the X-axis location of the center of the circle.\r\nk is the Y-axis location o" +
+        "f the center of the circle.\r\nr is the radius of the circle.\r\n\r\n");
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.Location = new System.Drawing.Point(224, 196);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(14, 13);
+            this.label32.TabIndex = 60;
+            this.label32.Text = "?";
+            this.toolTip.SetToolTip(this.label32, "a, b, c, and d are real number coefficients.\r\n");
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.Black;
+            this.label31.Location = new System.Drawing.Point(216, 113);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(14, 13);
+            this.label31.TabIndex = 59;
+            this.label31.Text = "?";
+            this.toolTip.SetToolTip(this.label31, "a, b, and c are real number coefficients.\r\n\r\n");
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.Black;
+            this.label30.Location = new System.Drawing.Point(163, 35);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(14, 13);
+            this.label30.TabIndex = 46;
+            this.label30.Text = "?";
+            this.toolTip.SetToolTip(this.label30, "m is the slope of the line.\r\nb is the Y-intercept of the line.");
             // 
             // label29
             // 
@@ -687,8 +747,8 @@
             this.buttonCalcAll.ForeColor = System.Drawing.Color.Black;
             this.buttonCalcAll.Location = new System.Drawing.Point(467, 625);
             this.buttonCalcAll.Name = "buttonCalcAll";
-            this.buttonCalcAll.Size = new System.Drawing.Size(167, 54);
-            this.buttonCalcAll.TabIndex = 58;
+            this.buttonCalcAll.Size = new System.Drawing.Size(127, 54);
+            this.buttonCalcAll.TabIndex = 19;
             this.buttonCalcAll.Text = "Enter";
             this.buttonCalcAll.UseVisualStyleBackColor = true;
             this.buttonCalcAll.Click += new System.EventHandler(this.buttonCalcAll_Click);
@@ -703,12 +763,25 @@
             this.label25.TabIndex = 59;
             this.label25.Text = "Error Log";
             // 
+            // buttonReset
+            // 
+            this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReset.ForeColor = System.Drawing.Color.Black;
+            this.buttonReset.Location = new System.Drawing.Point(614, 625);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(127, 54);
+            this.buttonReset.TabIndex = 20;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(1410, 714);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.richTextMessage);
             this.Controls.Add(this.buttonCalcAll);
@@ -795,6 +868,11 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Button buttonReset;
     }
 }
 
