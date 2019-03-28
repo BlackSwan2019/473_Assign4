@@ -385,7 +385,7 @@ namespace Assign4 {
             pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
 
             string tickLabel;
-            Font tickLabelFont = new Font("Microsoft San Serif", 11);
+            Font tickLabelFont = new Font("Microsoft San Serif", 10);
             SolidBrush tickLabelBrush = new SolidBrush(Color.LightGray);
 
             // Draw each tick mark on the positive X-axis.
@@ -404,7 +404,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 14, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 13, halfHeight + 5);
                 }
             }
 
@@ -414,7 +414,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight - (i * pixelsBetweenTicksPosY)) - 9);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight - (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
 
@@ -424,7 +424,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 10);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
         }
@@ -437,7 +437,6 @@ namespace Assign4 {
             g = pictureBoxGrid.CreateGraphics();
 
             g.Clear(Color.FromArgb(64, 64, 64));
-
 
             // Make the pen to draw the x and y-axis.
             pen = new Pen(new SolidBrush(Color.White));
@@ -483,7 +482,7 @@ namespace Assign4 {
             pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
 
             string tickLabel;
-            Font tickLabelFont = new Font("Microsoft San Serif", 11);
+            Font tickLabelFont = new Font("Microsoft San Serif", 10);
             SolidBrush tickLabelBrush = new SolidBrush(Color.LightGray);
 
             // Draw each tick mark on the positive X-axis.
@@ -502,7 +501,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 14, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 13, halfHeight + 5);
                 }
             }
 
@@ -511,8 +510,8 @@ namespace Assign4 {
                 g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
 
                 if ((i % 2) == 0 && i != 0) {
-                    tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 14, halfHeight + 5);
+                    tickLabel = String.Format("{0}", i * xInterval);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight - (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
 
@@ -522,7 +521,7 @@ namespace Assign4 {
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 10);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
         }
