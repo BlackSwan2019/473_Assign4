@@ -42,7 +42,6 @@
             this.textXInt = new System.Windows.Forms.TextBox();
             this.textXMax = new System.Windows.Forms.TextBox();
             this.textXMin = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.textThreeD = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonCalcAll = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picColorOne)).BeginInit();
@@ -91,7 +91,7 @@
             // pictureBoxGrid
             // 
             this.pictureBoxGrid.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBoxGrid.Location = new System.Drawing.Point(856, 12);
+            this.pictureBoxGrid.Location = new System.Drawing.Point(774, 12);
             this.pictureBoxGrid.Name = "pictureBoxGrid";
             this.pictureBoxGrid.Size = new System.Drawing.Size(620, 620);
             this.pictureBoxGrid.TabIndex = 0;
@@ -101,10 +101,10 @@
             // richTextMessage
             // 
             this.richTextMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextMessage.Location = new System.Drawing.Point(19, 533);
+            this.richTextMessage.Location = new System.Drawing.Point(19, 527);
             this.richTextMessage.Margin = new System.Windows.Forms.Padding(2);
             this.richTextMessage.Name = "richTextMessage";
-            this.richTextMessage.Size = new System.Drawing.Size(823, 99);
+            this.richTextMessage.Size = new System.Drawing.Size(428, 82);
             this.richTextMessage.TabIndex = 28;
             this.richTextMessage.Text = "";
             // 
@@ -130,9 +130,9 @@
             this.groupBox1.Controls.Add(this.textXInt);
             this.groupBox1.Controls.Add(this.textXMax);
             this.groupBox1.Controls.Add(this.textXMin);
-            this.groupBox1.Location = new System.Drawing.Point(85, 343);
+            this.groupBox1.Location = new System.Drawing.Point(19, 299);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(637, 110);
+            this.groupBox1.Size = new System.Drawing.Size(317, 188);
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Graph Parameters";
@@ -141,7 +141,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(539, 34);
+            this.label24.Location = new System.Drawing.Point(222, 109);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(47, 13);
             this.label24.TabIndex = 45;
@@ -151,7 +151,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(435, 34);
+            this.label23.Location = new System.Drawing.Point(118, 109);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(32, 13);
             this.label23.TabIndex = 44;
@@ -161,7 +161,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(340, 34);
+            this.label22.Location = new System.Drawing.Point(23, 109);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(29, 13);
             this.label22.TabIndex = 43;
@@ -171,7 +171,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(239, 34);
+            this.label21.Location = new System.Drawing.Point(222, 33);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(47, 13);
             this.label21.TabIndex = 42;
@@ -181,7 +181,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(143, 34);
+            this.label20.Location = new System.Drawing.Point(126, 33);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(32, 13);
             this.label20.TabIndex = 41;
@@ -191,7 +191,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(39, 34);
+            this.label19.Location = new System.Drawing.Point(22, 33);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(29, 13);
             this.label19.TabIndex = 40;
@@ -200,7 +200,7 @@
             // textYInt
             // 
             this.textYInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textYInt.Location = new System.Drawing.Point(542, 53);
+            this.textYInt.Location = new System.Drawing.Point(225, 128);
             this.textYInt.Name = "textYInt";
             this.textYInt.Size = new System.Drawing.Size(65, 35);
             this.textYInt.TabIndex = 39;
@@ -208,7 +208,7 @@
             // textYMax
             // 
             this.textYMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textYMax.Location = new System.Drawing.Point(438, 53);
+            this.textYMax.Location = new System.Drawing.Point(121, 128);
             this.textYMax.Name = "textYMax";
             this.textYMax.Size = new System.Drawing.Size(65, 35);
             this.textYMax.TabIndex = 38;
@@ -216,7 +216,7 @@
             // textYMin
             // 
             this.textYMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textYMin.Location = new System.Drawing.Point(341, 53);
+            this.textYMin.Location = new System.Drawing.Point(24, 128);
             this.textYMin.Name = "textYMin";
             this.textYMin.Size = new System.Drawing.Size(65, 35);
             this.textYMin.TabIndex = 37;
@@ -224,7 +224,7 @@
             // textXInt
             // 
             this.textXInt.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textXInt.Location = new System.Drawing.Point(242, 53);
+            this.textXInt.Location = new System.Drawing.Point(225, 52);
             this.textXInt.Name = "textXInt";
             this.textXInt.Size = new System.Drawing.Size(65, 35);
             this.textXInt.TabIndex = 36;
@@ -232,7 +232,7 @@
             // textXMax
             // 
             this.textXMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textXMax.Location = new System.Drawing.Point(141, 53);
+            this.textXMax.Location = new System.Drawing.Point(124, 52);
             this.textXMax.Name = "textXMax";
             this.textXMax.Size = new System.Drawing.Size(65, 35);
             this.textXMax.TabIndex = 35;
@@ -240,20 +240,10 @@
             // textXMin
             // 
             this.textXMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textXMin.Location = new System.Drawing.Point(42, 53);
+            this.textXMin.Location = new System.Drawing.Point(25, 52);
             this.textXMin.Name = "textXMin";
             this.textXMin.Size = new System.Drawing.Size(65, 35);
             this.textXMin.TabIndex = 34;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(16, 518);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(50, 13);
-            this.label25.TabIndex = 50;
-            this.label25.Text = "Error Log";
             // 
             // label1
             // 
@@ -638,25 +628,35 @@
             // 
             this.buttonCalcAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCalcAll.ForeColor = System.Drawing.Color.Black;
-            this.buttonCalcAll.Location = new System.Drawing.Point(349, 298);
+            this.buttonCalcAll.Location = new System.Drawing.Point(549, 555);
             this.buttonCalcAll.Name = "buttonCalcAll";
-            this.buttonCalcAll.Size = new System.Drawing.Size(114, 39);
+            this.buttonCalcAll.Size = new System.Drawing.Size(167, 54);
             this.buttonCalcAll.TabIndex = 58;
             this.buttonCalcAll.Text = "Calculate!";
             this.buttonCalcAll.UseVisualStyleBackColor = true;
             this.buttonCalcAll.Click += new System.EventHandler(this.buttonCalcAll_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(16, 511);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(50, 13);
+            this.label25.TabIndex = 59;
+            this.label25.Text = "Error Log";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.ClientSize = new System.Drawing.Size(1501, 654);
+            this.ClientSize = new System.Drawing.Size(1410, 654);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.richTextMessage);
             this.Controls.Add(this.buttonCalcAll);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label25);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.richTextMessage);
             this.Controls.Add(this.pictureBoxGrid);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
@@ -696,7 +696,6 @@
         private System.Windows.Forms.TextBox textXInt;
         private System.Windows.Forms.TextBox textXMax;
         private System.Windows.Forms.TextBox textXMin;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -733,6 +732,7 @@
         private System.Windows.Forms.TextBox textThreeD;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonCalcAll;
+        private System.Windows.Forms.Label label25;
     }
 }
 

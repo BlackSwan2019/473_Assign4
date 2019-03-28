@@ -62,28 +62,6 @@ namespace Assign4 {
             int m = 1;      // Slope of line.
             int b = 1;      // Y-intercept.
 
-            int parsedValue;    // Used for input validation.
-
-            // If user inputted a non-number for M, then yell at them and don't perform any more action!
-            if (!int.TryParse(textOneM.Text, out parsedValue)) {
-                textOneM.Clear();
-                textOneB.Clear();
-
-                richTextMessage.AppendText("Numbers only!");
-
-                return;
-            }
-
-            // If user inputted a non-number for B, then yell at them and don't perform any more action!
-            if (!int.TryParse(textOneB.Text, out parsedValue)) {
-                textOneM.Clear();
-                textOneB.Clear();
-
-                richTextMessage.AppendText("Numbers only!");
-
-                return;
-            }
-
             // Get what the user typed into the inputs for the linear equation.
             m = Convert.ToInt32(textOneM.Text);
             b = Convert.ToInt32(textOneB.Text);
@@ -477,10 +455,36 @@ namespace Assign4 {
         }
 
         private void buttonCalcAll_Click(object sender, EventArgs e) {
-            calcLinear();
-            calcQuadratic();
-            calcCubic();
-            calcCircle();
+            int parsedValue;    // Used for input validation.
+
+            // Only process formulas if 1. Fields aren't blank and 2. There are numbers in the fields.
+            if (!textOneB.Text.Equals("") && !textOneM.Text.Equals("")) {
+                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                if (int.TryParse(textOneM.Text, out parsedValue) && int.TryParse(textOneB.Text, out parsedValue)) {
+                    calcLinear();
+                }
+            }
+
+            if (!textTwoA.Text.Equals("") && !textTwoB.Text.Equals("") && !textTwoC.Text.Equals("")) {
+                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                if (int.TryParse(textTwoA.Text, out parsedValue) && int.TryParse(textTwoB.Text, out parsedValue) && int.TryParse(textTwoC.Text, out parsedValue)) {
+                    calcQuadratic();
+                }
+            }
+
+            if (!textThreeA.Text.Equals("") && !textThreeB.Text.Equals("") && !textThreeC.Text.Equals("") && !textThreeD.Text.Equals("")) {
+                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                if (int.TryParse(textThreeA.Text, out parsedValue) && int.TryParse(textThreeB.Text, out parsedValue) && int.TryParse(textThreeC.Text, out parsedValue) && int.TryParse(textThreeD.Text, out parsedValue)) {
+                    calcCubic();
+                }
+            }
+
+            if (!textFourH.Text.Equals("") && !textFourK.Text.Equals("") && !textFourR.Text.Equals("") && !textThreeD.Text.Equals("")) {
+                // If user inputted a non-number for M, then yell at them and don't perform any more action!
+                if (int.TryParse(textFourH.Text, out parsedValue) && int.TryParse(textFourK.Text, out parsedValue) && int.TryParse(textFourR.Text, out parsedValue)) {
+                    calcCircle();
+                }
+            }
         }
     }
 }
