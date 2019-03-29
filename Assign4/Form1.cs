@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Assign4 {
     public partial class Form1 : Form {
+        // Graph parameters.
         int xMin = -100;
         int xMax = 100;
         int xInterval = 10;
@@ -124,6 +125,7 @@ namespace Assign4 {
 
             Point[] points;
 
+            // Default equation coefficients.
             double a = 0;
             double b = 1;
             double c = 2;
@@ -145,7 +147,7 @@ namespace Assign4 {
                 double y = (a * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + (b * pixelsBetweenTicksPosX) * i;
 
                 //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
-                points[i] = new Point(halfWidth + (int)x, halfHeight - (int)y - ((int)c * pixelsBetweenTicksPosY));
+                points[i] = new Point(halfWidth + ((int)b * pixelsBetweenTicksPosX) + (int)x, halfHeight - (int)y - ((int)c * pixelsBetweenTicksPosY));
             }
 
             // Draw the line for the positive X-axis side.
@@ -153,16 +155,18 @@ namespace Assign4 {
 
             // Construct an array of points. The number of elements in this array is the number of ticks on the negative X-axis.
             points = new Point[amountOfTicksNegX];
-
+            
             // For every negative X-axis tick, make an (x,y) point.
             for (int i = 0; i < amountOfTicksNegX; i++) {
                 //points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksPosY)));
                 double x = i * pixelsBetweenTicksPosX;
-                double y = a * (Math.Pow(i, 2) * pixelsBetweenTicksPosX) + b * (i * pixelsBetweenTicksPosX);
+                //double y = a * (Math.Pow(i, 2) * pixelsBetweenTicksPosX) + b * (i * pixelsBetweenTicksPosX);
+                double y = (a * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + (b * pixelsBetweenTicksPosX) * i;
 
                 //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
-                points[i] = new Point(halfWidth - (int)x, halfHeight - (int)y - ((int)c * pixelsBetweenTicksPosY));
+                points[i] = new Point(halfWidth + ((int)b * pixelsBetweenTicksPosX) - (int)x, halfHeight - (int)y - ((int)c * pixelsBetweenTicksPosY));
             }
+
             // Draw the line for the negative X-axis side
             g.DrawCurve(pen, points);
         }
@@ -182,11 +186,13 @@ namespace Assign4 {
 
             Point[] points;
 
+            // Equation coefficients.
             double a = 1f;
             double b = 1f;
             double c = 1f;
             double d = 0f;
 
+            // Convert input field strings to numbers.
             a = Convert.ToDouble(textThreeA.Text);
             b = Convert.ToDouble(textThreeB.Text);
             c = Convert.ToDouble(textThreeC.Text);
@@ -292,6 +298,21 @@ namespace Assign4 {
             halfHeight = pictureBoxGrid.Height / 2;
             halfWidth = pictureBoxGrid.Width / 2;
 
+
+            // Get the X-axis location of the origin.
+            int xTicks = pictureBoxGrid.Width / xInterval;
+            int pixelsBetwixtXTicks = pictureBoxGrid.Width / xTicks;
+            int originX = Math.Abs(xMin) * pixelsBetwixtXTicks;
+
+            // Get the Y-axis location of the origin.
+            int yTicks = pictureBoxGrid.Height/ yInterval;
+            int pixelsBetwixtYTicks = pictureBoxGrid.Height/ xTicks;
+            int originY = yMax * pixelsBetwixtYTicks;
+
+            Point origin = new Point(originX, originY);
+
+            Console.WriteLine(origin.X + " " + origin.Y);
+
             // Draw horizontal line.
             g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
 
@@ -382,12 +403,10 @@ namespace Assign4 {
         *  Return:     void
         */
         private void drawGraph() {
-            // Clear old graphics.
-            //pictureBoxGrid.Invalidate();
-            
             // Create Graphics object for the pictureBox (where the graph will be drawn).
             g = pictureBoxGrid.CreateGraphics();
 
+            // Clear old graphics.
             g.Clear(Color.FromArgb(64, 64, 64));
 
             // Make the pen to draw the x and y-axis.
@@ -592,7 +611,7 @@ namespace Assign4 {
             if (!textXMin.Text.Equals("") && int.TryParse(textXMin.Text, out parsedIntValue)) {
                 xMin = Convert.ToInt32(textXMin.Text);
 
-                if (xMin > 0 || xMin > xMax) {
+                if (xMin > 0) {
                     richTextMessage.AppendText("xMin must be less than or equal to 0.\n");
 
                     return;
