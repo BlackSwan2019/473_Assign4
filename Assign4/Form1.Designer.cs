@@ -102,7 +102,7 @@
             // pictureBoxGrid
             // 
             this.pictureBoxGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBoxGrid.Location = new System.Drawing.Point(774, 12);
+            this.pictureBoxGrid.Location = new System.Drawing.Point(774, 42);
             this.pictureBoxGrid.Name = "pictureBoxGrid";
             this.pictureBoxGrid.Size = new System.Drawing.Size(620, 620);
             this.pictureBoxGrid.TabIndex = 0;
@@ -123,11 +123,15 @@
             // 
             // colorThree
             // 
-            this.colorThree.Color = System.Drawing.Color.Red;
+            this.colorThree.Color = System.Drawing.Color.Green;
             // 
-            // colorOne
+            // colorFour
             // 
-            this.colorOne.Color = System.Drawing.Color.Red;
+            this.colorFour.Color = System.Drawing.Color.Blue;
+            // 
+            // colorTwo
+            // 
+            this.colorTwo.Color = System.Drawing.Color.Red;
             // 
             // groupBox1
             // 
@@ -263,7 +267,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(55, 56);
+            this.label1.Location = new System.Drawing.Point(54, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 29);
             this.label1.TabIndex = 1;
@@ -274,7 +278,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(183, 56);
+            this.label2.Location = new System.Drawing.Point(182, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 29);
             this.label2.TabIndex = 4;
@@ -416,7 +420,7 @@
             // textOneM
             // 
             this.textOneM.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textOneM.Location = new System.Drawing.Point(108, 53);
+            this.textOneM.Location = new System.Drawing.Point(107, 53);
             this.textOneM.Name = "textOneM";
             this.textOneM.Size = new System.Drawing.Size(69, 35);
             this.textOneM.TabIndex = 1;
@@ -425,7 +429,7 @@
             // textOneB
             // 
             this.textOneB.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textOneB.Location = new System.Drawing.Point(236, 53);
+            this.textOneB.Location = new System.Drawing.Point(235, 53);
             this.textOneB.Name = "textOneB";
             this.textOneB.Size = new System.Drawing.Size(69, 35);
             this.textOneB.TabIndex = 2;
