@@ -18,6 +18,8 @@ namespace Assign4 {
         int yMax = 100;
         int yInterval = 10;
 
+        Point origin;
+
         Graphics g;     // The graphics object for the picture box containing the Cartesian graph.
         Pen pen;        // The object for drawing things on the graphics object (the graph).
 
@@ -89,7 +91,7 @@ namespace Assign4 {
 
             // For every positive X-axis tick, make an (x,y) point.
             for (int i = 0; i < amountOfTicksPosX + 2; i++) {
-                points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - ((int) b * pixelsBetweenTicksPosY) - (int)m * (i * pixelsBetweenTicksPosY));
+                points[i] = new Point(origin.X + i * pixelsBetweenTicksPosX, origin.Y - ((int) b * pixelsBetweenTicksPosY) - 6 - (int)m * (i * pixelsBetweenTicksPosY));
             }
 
             // Find (x, y) coordinate of right side of line.
@@ -100,7 +102,7 @@ namespace Assign4 {
 
             // For every negative X-axis tick, make an (x,y) point.
             for (int i = 0; i < amountOfTicksNegX + 2; i++) {
-                points[i] = new Point(halfWidth - i * pixelsBetweenTicksPosX, halfHeight - ((int) b * pixelsBetweenTicksPosY) + (int) m * (i * pixelsBetweenTicksNegY));
+                points[i] = new Point(origin.X - i * pixelsBetweenTicksPosX, origin.Y - ((int) b * pixelsBetweenTicksPosY) + (int) m * (i * pixelsBetweenTicksNegY));
             }
 
             // Find (x, y) coordinate of left side of line.
@@ -147,7 +149,7 @@ namespace Assign4 {
                 double y = (a * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + (b * pixelsBetweenTicksPosX) * i;
 
                 //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
-                points[i] = new Point(halfWidth + ((int)b * pixelsBetweenTicksPosX) + (int)x, halfHeight - (int)y - ((int)c * pixelsBetweenTicksPosY));
+                points[i] = new Point(origin.X + ((int)b * pixelsBetweenTicksPosX) + (int)x, origin.Y - (int)y - ((int)c * pixelsBetweenTicksPosY));
             }
 
             // Draw the line for the positive X-axis side.
@@ -164,7 +166,7 @@ namespace Assign4 {
                 double y = (a * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + (b * pixelsBetweenTicksPosX) * i;
 
                 //points[i] = new Point(halfWidth + i * pixelsBetweenTicksPosX, halfHeight - (c * pixelsBetweenTicksPosY) - (b * (i * pixelsBetweenTicksPosY)) - (a * ((i * i) * pixelsBetweenTicksNegY)));
-                points[i] = new Point(halfWidth + ((int)b * pixelsBetweenTicksPosX) - (int)x, halfHeight - (int)y - ((int)c * pixelsBetweenTicksPosY));
+                points[i] = new Point(origin.X + ((int)b * pixelsBetweenTicksPosX) - (int)x, origin.Y - (int)y - ((int)c * pixelsBetweenTicksPosY));
             }
 
             // Draw the line for the negative X-axis side
@@ -209,7 +211,7 @@ namespace Assign4 {
                 //y = ax3 + bx2 + cx + d
                 double x = (i * pixelsBetweenTicksPosX);
                 double y = ((a * pixelsBetweenTicksPosX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksPosX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksPosX) * i) + (d * pixelsBetweenTicksPosX)));
-                points[i] = new Point(halfWidth + (int)x, halfHeight - (int)y);
+                points[i] = new Point(origin.X + (int)x, origin.Y - (int)y);
                 //Console.WriteLine(i + " | " + (a * Math.Pow(i, 3) + b * Math.Pow(i,2) + c * i + d) + " || " + x + " | " + y + " || " + points[i].X + " | " + points[i].Y);//+ " || " + i + " | " + ((a) * Math.Pow(i, 3) + ((b) * Math.Pow(i, 2) + ((c) * i) + (d))));
             }
 
@@ -224,7 +226,7 @@ namespace Assign4 {
                 //y = ax3 + bx2 + cx + d
                 double x = (i * pixelsBetweenTicksNegX);
                 double y = ((a * pixelsBetweenTicksNegX) * Math.Pow(i, 3) + ((b * pixelsBetweenTicksNegX) * Math.Pow(i, 2) + ((c * pixelsBetweenTicksNegX) * i)));
-                points[i] = new Point(halfWidth - (int)x, halfHeight + (int)y - (int)(d * pixelsBetweenTicksNegX));
+                points[i] = new Point(origin.X - (int)x, origin.Y + (int)y - (int)(d * pixelsBetweenTicksNegX));
                 //Console.WriteLine(i + " | " + (a * Math.Pow(i, 3) + b * Math.Pow(i, 2) + c * i + d) + " || " + x + " | " + y + " || " + points[i].X + " | " + points[i].Y);//+ " || " + i + " | " + ((a) * Math.Pow(i, 3) + ((b) * Math.Pow(i, 2) + ((c) * i) + (d))));
             }
 
@@ -263,10 +265,10 @@ namespace Assign4 {
             // Construct an array of points. The number of elements in this array is the number of ticks on the positive X-axis.
             points = new Point[amountOfTicksPosX];
 
-            Point centerOfCircle = new Point(halfWidth + ((int) h * pixelsBetweenTicksPosX), halfHeight - ((int) k * pixelsBetweenTicksPosY));
-
-            int circleCenterX = halfWidth + ((int) h * pixelsBetweenTicksPosX);
-            int circleCenterY = halfHeight - ((int) k * pixelsBetweenTicksPosY);
+            Point centerOfCircle = new Point(origin.X + ((int) h * pixelsBetweenTicksPosX), origin.Y - ((int) k * pixelsBetweenTicksPosY));
+            
+            int circleCenterX = origin.X + ((int) h * pixelsBetweenTicksPosX);
+            int circleCenterY = origin.Y - ((int) k * pixelsBetweenTicksPosY);
 
             int radiusOfCircle = (int) r * pixelsBetweenTicksPosX;
 
@@ -300,24 +302,24 @@ namespace Assign4 {
 
 
             // Get the X-axis location of the origin.
-            int xTicks = pictureBoxGrid.Width / xInterval;
-            int pixelsBetwixtXTicks = pictureBoxGrid.Width / xTicks;
-            int originX = Math.Abs(xMin) * pixelsBetwixtXTicks;
+            int totalTicksX = (Math.Abs(xMin) + xMax) / xInterval;
+            int xTicksNeg = Math.Abs(xMin) / xInterval;
+            int pixelsBetwixtXTicks = pictureBoxGrid.Width / totalTicksX;
+            int originX = xTicksNeg * pixelsBetwixtXTicks;
 
             // Get the Y-axis location of the origin.
-            int yTicks = pictureBoxGrid.Height/ yInterval;
-            int pixelsBetwixtYTicks = pictureBoxGrid.Height/ xTicks;
-            int originY = yMax * pixelsBetwixtYTicks;
+            int totalTicksY = (Math.Abs(yMin) + yMax) / yInterval;
+            int yTicksPos = Math.Abs(yMax) / yInterval;
+            int pixelsBetwixtYTicks = pictureBoxGrid.Height / totalTicksY;
+            int originY = yTicksPos * pixelsBetwixtYTicks;
 
-            Point origin = new Point(originX, originY);
-
-            Console.WriteLine(origin.X + " " + origin.Y);
+            origin = new Point(originX, originY);
 
             // Draw horizontal line.
-            g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
+            g.DrawLine(pen, 0, origin.Y, pictureBoxGrid.Width, origin.Y);
 
             // Draw vertical line.
-            g.DrawLine(pen, halfWidth, 0, halfWidth, pictureBoxGrid.Height);
+            g.DrawLine(pen, origin.X, 0, originX, pictureBoxGrid.Height);
 
             // Set pen width for a tick mark.
             pen.Width = 1;
@@ -327,26 +329,26 @@ namespace Assign4 {
             amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
 
             // Determine how many pixels between ticks on the positive X-axis.
-            pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
+            pixelsBetweenTicksPosX = (pictureBoxGrid.Width - origin.X) / amountOfTicksPosX;
 
             // Get how many ticks need to be drawn on negative X-axis.
             amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
 
             // Determine how many pixels between ticks on the negative X-axis.
-            pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
+            pixelsBetweenTicksNegX = origin.X / amountOfTicksNegX;
 
 
             // Get how many ticks need to be drawn on positive Y-axis.
             amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
 
             // Determine how many pixels between ticks on the positive Y-axis.
-            pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
+            pixelsBetweenTicksPosY = origin.Y / amountOfTicksPosY;
 
             // Get how many ticks need to be drawn on negative Y-axis.
             amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
 
             // Determine how many pixels between ticks on the negative Y-axis.
-            pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
+            pixelsBetweenTicksNegY = origin.Y / amountOfTicksNegY;
 
             string tickLabel;
             Font tickLabelFont = new Font("Microsoft San Serif", 10);
@@ -354,41 +356,41 @@ namespace Assign4 {
 
             // Draw each tick mark on the positive X-axis.
             for (int i = 0; i <= amountOfTicksPosX; i++) {
-                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+                g.DrawLine(pen, origin.X + (i * pixelsBetweenTicksPosX), origin.Y + 3, origin.X + (i * pixelsBetweenTicksPosX), origin.Y - 3);
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth + (i *  pixelsBetweenTicksPosX)) - 10, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (origin.X + (i *  pixelsBetweenTicksPosX)) - 10, origin.Y + 5);
                 }
             }
 
             // Draw each tick mark on the negative X-axis.
             for (int i = 0; i <= amountOfTicksNegX; i++) {
-                g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+                g.DrawLine(pen, origin.X - (i * pixelsBetweenTicksNegX), origin.Y + 3, origin.X - (i * pixelsBetweenTicksNegX), origin.Y - 3);
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksPosX)) - 13, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (origin.X - (i * pixelsBetweenTicksPosX)) - 13, origin.Y + 5);
                 }
             }
 
             // Draw each tick mark on the positive Y-axis.
             for (int i = 0; i <= amountOfTicksPosY; i++) {
-                g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+                g.DrawLine(pen, origin.X + 3, origin.Y - (i * pixelsBetweenTicksPosY), origin.X - 3, origin.Y - (i * pixelsBetweenTicksPosY));
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight - (i * pixelsBetweenTicksPosY)) - 8);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, origin.X + 4, (origin.Y - (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
 
             // Draw each tick mark on the negative Y-axis.
             for (int i = 0; i <= amountOfTicksNegY; i++) {
-                g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+                g.DrawLine(pen, origin.X + 3, origin.Y + (i * pixelsBetweenTicksNegY), origin.X - 3, origin.Y + (i * pixelsBetweenTicksNegY));
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksPosY)) - 8);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, origin.X + 4, (origin.Y + (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
         }
@@ -417,11 +419,25 @@ namespace Assign4 {
             halfHeight = pictureBoxGrid.Height / 2;
             halfWidth = pictureBoxGrid.Width / 2;
 
+            // Get the X-axis location of the origin.
+            int totalTicksX = (Math.Abs(xMin) + xMax) / xInterval;
+            int xTicksNeg = Math.Abs(xMin) / xInterval;
+            int pixelsBetwixtXTicks = pictureBoxGrid.Width / totalTicksX;
+            int originX = xTicksNeg * pixelsBetwixtXTicks;
+
+            // Get the Y-axis location of the origin.
+            int totalTicksY = (Math.Abs(yMin) + yMax) / yInterval;
+            int yTicksPos = Math.Abs(yMax) / yInterval;
+            int pixelsBetwixtYTicks = pictureBoxGrid.Height / totalTicksY;
+            int originY = yTicksPos * pixelsBetwixtYTicks;
+
+            origin = new Point(originX, originY);
+
             // Draw horizontal line.
-            g.DrawLine(pen, 0, halfHeight, pictureBoxGrid.Width, halfHeight);
+            g.DrawLine(pen, 0, origin.Y, pictureBoxGrid.Width, origin.Y);
 
             // Draw vertical line.
-            g.DrawLine(pen, halfWidth, 0, halfWidth, pictureBoxGrid.Height);
+            g.DrawLine(pen, origin.X, 0, originX, pictureBoxGrid.Height);
 
             // Set pen width for a tick mark.
             pen.Width = 1;
@@ -431,26 +447,26 @@ namespace Assign4 {
             amountOfTicksPosX = Math.Abs(xMax) / Math.Abs(xInterval);
 
             // Determine how many pixels between ticks on the positive X-axis.
-            pixelsBetweenTicksPosX = halfWidth / amountOfTicksPosX;
+            pixelsBetweenTicksPosX = (pictureBoxGrid.Width - origin.X) / amountOfTicksPosX;
 
             // Get how many ticks need to be drawn on negative X-axis.
             amountOfTicksNegX = Math.Abs(xMin) / Math.Abs(xInterval);
 
             // Determine how many pixels between ticks on the negative X-axis.
-            pixelsBetweenTicksNegX = halfWidth / amountOfTicksNegX;
+            pixelsBetweenTicksNegX = origin.X / amountOfTicksNegX;
 
 
             // Get how many ticks need to be drawn on positive Y-axis.
             amountOfTicksPosY = Math.Abs(yMax) / Math.Abs(yInterval);
 
             // Determine how many pixels between ticks on the positive Y-axis.
-            pixelsBetweenTicksPosY = halfHeight / amountOfTicksPosY;
+            pixelsBetweenTicksPosY = origin.Y / amountOfTicksPosY;
 
             // Get how many ticks need to be drawn on negative Y-axis.
             amountOfTicksNegY = Math.Abs(yMin) / Math.Abs(yInterval);
 
             // Determine how many pixels between ticks on the negative Y-axis.
-            pixelsBetweenTicksNegY = halfHeight / amountOfTicksNegY;
+            pixelsBetweenTicksNegY = (pictureBoxGrid.Height - origin.Y) / amountOfTicksNegY;
 
             string tickLabel;
             Font tickLabelFont = new Font("Microsoft San Serif", 10);
@@ -458,41 +474,41 @@ namespace Assign4 {
 
             // Draw each tick mark on the positive X-axis.
             for (int i = 0; i <= amountOfTicksPosX; i++) {
-                g.DrawLine(pen, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight + 3, halfWidth + (i * pixelsBetweenTicksPosX), halfHeight - 3);
+                g.DrawLine(pen, origin.X + (i * pixelsBetweenTicksPosX), origin.Y + 3, origin.X + (i * pixelsBetweenTicksPosX), origin.Y - 3);
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth + (i * pixelsBetweenTicksPosX)) - 10, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (origin.X + (i * pixelsBetweenTicksPosX)) - 10, origin.Y + 5);
                 }
             }
 
             // Draw each tick mark on the negative X-axis.
             for (int i = 0; i <= amountOfTicksNegX; i++) {
-                g.DrawLine(pen, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight + 3, halfWidth - (i * pixelsBetweenTicksNegX), halfHeight - 3);
+                g.DrawLine(pen, origin.X - (i * pixelsBetweenTicksNegX), origin.Y + 3, origin.X - (i * pixelsBetweenTicksNegX), origin.Y - 3);
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (halfWidth - (i * pixelsBetweenTicksNegX)) - 13, halfHeight + 5);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, (origin.X - (i * pixelsBetweenTicksPosX)) - 13, origin.Y + 5);
                 }
             }
 
             // Draw each tick mark on the positive Y-axis.
             for (int i = 0; i <= amountOfTicksPosY; i++) {
-                g.DrawLine(pen, halfWidth + 3, halfHeight - (i * pixelsBetweenTicksPosY), halfWidth - 3, halfHeight - (i * pixelsBetweenTicksPosY));
+                g.DrawLine(pen, origin.X + 3, origin.Y - (i * pixelsBetweenTicksPosY), origin.X - 3, origin.Y - (i * pixelsBetweenTicksPosY));
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight - (i * pixelsBetweenTicksPosY)) - 8);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, origin.X + 4, (origin.Y - (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
 
             // Draw each tick mark on the negative Y-axis.
             for (int i = 0; i <= amountOfTicksNegY; i++) {
-                g.DrawLine(pen, halfWidth + 3, halfHeight + (i * pixelsBetweenTicksNegY), halfWidth - 3, halfHeight + (i * pixelsBetweenTicksNegY));
+                g.DrawLine(pen, origin.X + 3, origin.Y + (i * pixelsBetweenTicksNegY), origin.X - 3, origin.Y + (i * pixelsBetweenTicksNegY));
 
                 if ((i % 2) == 0 && i != 0) {
                     tickLabel = String.Format("-{0}", i * xInterval);
-                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, halfWidth + 4, (halfHeight + (i * pixelsBetweenTicksNegY)) - 8);
+                    g.DrawString(tickLabel, tickLabelFont, tickLabelBrush, origin.X + 4, (origin.Y + (i * pixelsBetweenTicksPosY)) - 8);
                 }
             }
         }
